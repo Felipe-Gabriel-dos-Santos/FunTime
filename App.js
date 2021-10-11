@@ -1,21 +1,45 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+import TelaLoginCadastro from './src/screens/TelaLoginCadastro';
+import TelaCadastro from './src/screens/TelaCadastro/index';
+import TelaLogin from './src/screens/TelaLogin/index';
+import TelaInicial from './src/screens/TelaInicial';
+
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
+  const headerStyle = {
+
+    headerMode: 'float',
+    headerTitleAlign: 'center',
+    headerTintColor: 'purple',
+    transitionSpec: 'horizontal',
+    animation: 'slide_from_right',
+    presentation: 'card',
+    gestureEnabled: true,
+    headerBackTitle: false,
+
+    headerTitleStyle: {
+      fontWeight: 'bold',
+      fonSize: 20,
+      fontFamily: 'Roboto',
+      color: 'purple'
+    },
+  }
+
+  return (
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={headerStyle}>
+        <Stack.Screen name="Tela Login / Cadastro" component={TelaLoginCadastro} options={{headerShown: false}} />
+        <Stack.Screen name="Cadastro" component={TelaCadastro}/>
+        <Stack.Screen name="Login" component={TelaLogin}/>
+        <Stack.Screen name="Início" component={TelaInicial}/>
+      </Stack.Navigator>
+    </NavigationContainer>
+  )
+} 
