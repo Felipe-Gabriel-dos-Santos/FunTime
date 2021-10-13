@@ -7,7 +7,7 @@ import TelaPerfil from '../screens/TelaPerfil';
 
 var IconSize = 30;
 
-function Focus(IconSize, focused){
+function FocusSize(IconSize, focused){
 
 	if (focused == true) return IconSize + 10;
 	else return IconSize;
@@ -52,10 +52,10 @@ export default function TabBar() {
 
 	return (
 		<Tab.Navigator screenOptions={headerStyle}>
-			<Tab.Screen name="Home" component={TelaInicial} options={{
-				tabBarIcon: ({color, focused}) => (<Entypo name="home" size={Focus(IconSize, focused)} color={color} />)}}/>
+			<Tab.Screen name="Início" component={TelaInicial} options={{
+				tabBarIcon: ({color, focused}) => (<Entypo name="home" size={FocusSize(IconSize, focused)} color={color} />)}}/>
 
 			<Tab.Screen name="Perfil" component={TelaPerfil} options={{
-				tabBarIcon: ({color, focused}) => (<Octicons name="person" size={Focus(IconSize, focused)} color={color} />)}}/>
+				tabBarIcon: ({color, focused}) => (<Octicons name="person" size={FocusSize(IconSize, focused)} color={color} />)}}/>
 		</Tab.Navigator>
 	);}

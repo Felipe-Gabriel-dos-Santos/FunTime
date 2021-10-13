@@ -27,7 +27,6 @@ export default function App() {
 		headerTitleStyle: {
 			fontWeight: 'bold',
 			fonSize: 20,
-			fontFamily: 'Roboto',
 			color: 'purple'
 		},
 	};
@@ -37,7 +36,7 @@ export default function App() {
 		<NavigationContainer>
 			<Stack.Navigator screenOptions={headerStyle}>
 				<Stack.Screen name="Tela Login / Cadastro" component={TelaLoginCadastro} options={{headerShown: false}}/>
-				<Stack.Screen name="Início" component={TabBar} options={{headerShown: false}}/>
+				<Stack.Screen name="Início / Tela Principal" component={TabBar} options={{headerShown: false}}/>
 				<Stack.Screen name="Cadastro" component={TelaCadastro}/>
 				<Stack.Screen name="Login" component={TelaLogin}/>
 			</Stack.Navigator>
