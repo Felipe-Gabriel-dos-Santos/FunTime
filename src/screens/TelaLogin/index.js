@@ -45,8 +45,7 @@ export default function TelaLogin() {
 					style={styles.TextInput}
 					placeholder="Email"
 					placeholderTextColor="#003f5c"
-					onChangeText={(email) => setEmail(email)}
-				/>
+					onChangeText={(email) => setEmail(email)}/>
 			</View>
           
 			<View style={styles.inputView}>
@@ -55,8 +54,7 @@ export default function TelaLogin() {
 					placeholder="Senha"
 					placeholderTextColor="#003f5c"
 					secureTextEntry={true}
-					onChangeText={(password) => setPassword(password)}
-				/>
+					onChangeText={(password) => setPassword(password)}/>
 			</View>
       
 			<View>

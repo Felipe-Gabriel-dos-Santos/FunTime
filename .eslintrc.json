@@ -55,6 +55,13 @@
             "error",
             "always"],
 
+        "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 0 }],
+
+        "padding-line-between-statements": [
+            "error",
+            { "blankLine": "always", "prev": "*", "next": "return" }
+        ],
+
 
         "import-helpers/order-imports": [
             "warn",

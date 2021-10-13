@@ -8,11 +8,11 @@ import TelaCadastro from './src/screens/TelaCadastro/index';
 import TelaLogin from './src/screens/TelaLogin/index';
 import TelaLoginCadastro from './src/screens/TelaLoginCadastro';
 
-
 const Stack = createNativeStackNavigator();
 
 export default function App() {
 
+	// Estilo do cabeçalho da pagina
 	const headerStyle = {
 
 		headerMode: 'float',

@@ -2,7 +2,6 @@ import { LinearGradient } from 'expo-linear-gradient';
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
-
 export default function Botão(props) {
 
 	const styles = StyleSheet.create({
@@ -33,5 +32,3 @@ export default function Botão(props) {
 			</TouchableOpacity>
 		</View>
 	); }
-
-      

@@ -3,7 +3,6 @@ import { StyleSheet, View, TextInput } from 'react-native';
 
 import Botão from '../../components/Botão';
 
-
 export default function TelaCadastro() {
 
 	const [nome, setNome] = useState(null);
@@ -42,7 +41,6 @@ export default function TelaCadastro() {
 		},
 	});
 
-
 	return (
 		<View style={styles.container}>
 			<View style={styles.inputView}>
@@ -51,16 +49,15 @@ export default function TelaCadastro() {
 					placeholder="Nome"
 					autoCapitalize='words'
 					placeholderTextColor="#003f5c"
-					onChangeText={(nome) => setNome(nome)}
-				/>
+					onChangeText={(nome) => setNome(nome)}/>
 			</View>
+
 			<View style={styles.inputView}>
 				<TextInput
 					style={styles.TextInput}
 					placeholder="Email"
 					placeholderTextColor="#003f5c"
-					onChangeText={(email) => setEmail(email)}
-				/>
+					onChangeText={(email) => setEmail(email)}/>
 			</View>
     
 			<View style={styles.inputView}>
@@ -69,8 +66,7 @@ export default function TelaCadastro() {
 					placeholder="Senha"
 					placeholderTextColor="#003f5c"
 					secureTextEntry={true}
-					onChangeText={(password) => setPassword(password)}
-				/>
+					onChangeText={(password) => setPassword(password)}/>
 			</View>
 
 			<View style={styles.inputView}>
@@ -79,8 +75,7 @@ export default function TelaCadastro() {
 					placeholder="Digite a Senha Novamente"
 					placeholderTextColor="#003f5c"
 					secureTextEntry={true}
-					onChangeText={(passwordTwo) => setPasswordTwo(passwordTwo)}
-				/>
+					onChangeText={(passwordTwo) => setPasswordTwo(passwordTwo)}/>
 			</View>
 
 			<View style={styles.inputView}>
@@ -88,8 +83,7 @@ export default function TelaCadastro() {
 					style={styles.TextInput}
 					placeholder="Data de Nascimento"
 					placeholderTextColor="#003f5c"
-					onChangeText={(date) => setDate(date)}
-				/>
+					onChangeText={(date) => setDate(date)}/>
 			</View>
 
 			<View>
@@ -99,7 +93,5 @@ export default function TelaCadastro() {
 		</View>
     
 	);
-
   
 }
-        
