@@ -4,10 +4,8 @@ import { View } from 'react-native';
 
 export default function TelaPerfil(){
 
-	// const style = StyleSheet.create({})
+	// Const style = StyleSheet.create({})
     
-
-
 	return (
 		<View>
 			

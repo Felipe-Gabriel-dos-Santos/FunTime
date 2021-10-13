@@ -4,7 +4,7 @@ import { View } from 'react-native';
 
 export default function TelaInicial(){
 
-	// const style = StyleSheet.create({})
+	// Const style = StyleSheet.create({})
     
 
 
