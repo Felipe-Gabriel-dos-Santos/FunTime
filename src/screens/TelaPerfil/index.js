@@ -2,7 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 
 
-export default function TelaInicial(){
+export default function TelaPerfil(){
 
 	// const style = StyleSheet.create({})
     
