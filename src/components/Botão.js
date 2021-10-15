@@ -26,7 +26,7 @@ export default function Botão(props) {
 	return (
 		<View>
 			<TouchableOpacity onPress={props.onPress}>
-				<LinearGradient colors={['#bf00bf', '#8303a3']} style={styles.button}>
+				<LinearGradient colors={['#bf00bf', '#8303a3', '#8303a3']} style={styles.button}>
 					<Text style={styles.text}>{String(props.title)}</Text>
 				</LinearGradient>
 			</TouchableOpacity>

@@ -6,11 +6,17 @@ import Botão from '../../components/Botão';
 
 export default function TelaLoginCadastro({ navigation }) {
 	return (
-		<SafeAreaView>
-			<View style={styles.container}>
+		<SafeAreaView style={styles.container}>
+			<View>
 				<StatusBar backgroundColor={styles.container.backgroundColor} />
-				<Text>Bem vindo(a) ao</Text>
-				<Text>FunTime</Text>
+
+				<View style={styles.TextStyle}>
+
+					<Text>Bem vindo(a) ao</Text>
+					<Text>FunTime</Text>
+
+				</View>
+
 			</View>
 
 			<View style={styles.buttonContainer}>
@@ -29,14 +35,17 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		textAlign: 'center',
 		fontSize: 20,
-		marginTop: 300,
 	},
 
 	buttonContainer: {
-		marginTop: 220,
+		marginTop: 150,
 		textAlign: 'center',
 		justifyContent: 'center',
 		alignItems: 'center',
-  
+	},
+
+	TextStyle: {
+		marginTop: 300,
+		fontSize: 20,
 	}
 });

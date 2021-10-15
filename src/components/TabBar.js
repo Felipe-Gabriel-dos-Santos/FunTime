@@ -10,6 +10,7 @@ var IconSize = 30;
 function FocusSize(IconSize, focused){
 
 	if (focused == true) return IconSize + 10;
+
 	else return IconSize;
 
 }
@@ -37,13 +38,14 @@ const headerStyle = {
 		paddingHorizontal: 10,
 		paddingBottom: 5,
 		height: 64,
-		elevation: 4,
+		elevation: 10,
 		borderRadius: 15,
 		marginBottom: 20,
 		marginHorizontal: 17,
-		borderWidth: 2,
+		borderWidth: 3,
 		borderColor: '#c0c2c0',
 	},
+
 };
 
 export default function TabBar() {
@@ -52,10 +54,12 @@ export default function TabBar() {
 
 	return (
 		<Tab.Navigator screenOptions={headerStyle}>
+
 			<Tab.Screen name="Início" component={TelaInicial} options={{
 				tabBarIcon: ({color, focused}) => (<Entypo name="home" size={FocusSize(IconSize, focused)} color={color} />)}}/>
 
 			<Tab.Screen name="Perfil" component={TelaPerfil} options={{
 				tabBarIcon: ({color, focused}) => (<Octicons name="person" size={FocusSize(IconSize, focused)} color={color} />)}}/>
+
 		</Tab.Navigator>
 	);}

@@ -26,6 +26,7 @@ export default function TelaCadastro() {
 			textAlign: 'center',
 			borderRadius: 8,
 			width: 300,
+			borderWidth: 0,
 			height: 45,
 			marginBottom: 20,
 			alignItems: 'center',
