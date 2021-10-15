@@ -30,6 +30,7 @@ export default function TelaLogin() {
          
 		TextInput: {
 			textAlign: 'center',
+			width: 300,
 			height: 50,
 			flex: 1,
 			padding: 10,

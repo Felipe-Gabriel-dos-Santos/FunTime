@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, TextInput } from 'react-native';
+import { StyleSheet, View, TextInput, SafeAreaView } from 'react-native';
 
 import Botão from '../../components/Botão';
+import ModalFunTime from '../../components/ModalFunTime';
 
 export default function TelaCadastro() {
 
@@ -11,8 +12,9 @@ export default function TelaCadastro() {
 	const [passwordTwo, setPasswordTwo] = useState(null);
 	const [date, setDate] = useState(null);
 
+	const [modalVisible, setmodalVisible] = useState(false);
+
 	const styles = StyleSheet.create({
-        
 		container: {
 			flex: 1,
 			backgroundColor: '#fff',
@@ -20,25 +22,25 @@ export default function TelaCadastro() {
 			justifyContent: 'center',
 			marginTop: -50
 		},
-   
+         
 		inputView: {
 			backgroundColor: '#e0dede',
 			textAlign: 'center',
 			borderRadius: 8,
 			width: 300,
-			borderWidth: 0,
 			height: 45,
 			marginBottom: 20,
 			alignItems: 'center',
 			elevation: 5,
 		},
-   
+         
 		TextInput: {
 			textAlign: 'center',
+			width: 300,
 			height: 50,
 			flex: 1,
 			padding: 10,
-      
+            
 		},
 	});
 
@@ -86,10 +88,8 @@ export default function TelaCadastro() {
 					placeholderTextColor="#003f5c"
 					onChangeText={(date) => setDate(date)}/>
 			</View>
-
-			<View>
-				<Botão title="Cadastrar" onPress={()=>{}}/>
-			</View>
+				
+			<Botão title="Cadastrar" onPress={()=>{setmodalVisible(true);}}/>
 
 		</View>
     
