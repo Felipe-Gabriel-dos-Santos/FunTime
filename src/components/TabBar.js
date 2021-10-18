@@ -15,39 +15,6 @@ function FocusSize(IconSize, focused){
 
 }
 
-const headerStyle = {
-
-	headerMode: 'float',
-	headerTitleAlign: 'center',
-	headerTintColor: 'purple',
-	transitionSpec: 'horizontal',
-	animation: 'slide_from_right',
-	presentation: 'card',
-	gestureEnabled: true,
-	headerBackTitle: false,
-
-	headerTitleStyle: {
-		fontWeight: 'bold',
-		color: 'purple'
-	},
-
-	tabBarShowLabel: false,
-	tabBarActiveTintColor: 'purple',
-
-	tabBarStyle: {
-		paddingHorizontal: 10,
-		paddingBottom: 5,
-		height: 64,
-		elevation: 10,
-		borderRadius: 15,
-		marginBottom: 20,
-		marginHorizontal: 17,
-		borderWidth: 3,
-		borderColor: '#c0c2c0',
-	},
-
-};
-
 export default function TabBar() {
 
 	const Tab = createBottomTabNavigator();
@@ -63,3 +30,36 @@ export default function TabBar() {
 
 		</Tab.Navigator>
 	);}
+
+const headerStyle = {
+
+	headerMode: 'float',
+	headerTitleAlign: 'center',
+	headerTintColor: 'purple',
+	transitionSpec: 'horizontal',
+	animation: 'slide_from_right',
+	presentation: 'card',
+	gestureEnabled: true,
+	headerBackTitle: false,
+	
+	headerTitleStyle: {
+		fontWeight: 'bold',
+		color: 'purple'
+	},
+	
+	tabBarShowLabel: false,
+	tabBarActiveTintColor: 'purple',
+	
+	tabBarStyle: {
+		paddingHorizontal: 10,
+		paddingBottom: 5,
+		height: 64,
+		elevation: 10,
+		borderRadius: 15,
+		marginBottom: 20,
+		marginHorizontal: 17,
+		borderWidth: 3,
+		borderColor: '#c0c2c0',
+	},
+	
+};

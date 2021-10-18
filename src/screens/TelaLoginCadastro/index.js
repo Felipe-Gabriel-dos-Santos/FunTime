@@ -1,8 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, SafeAreaView, View } from 'react-native';
+import { Text, SafeAreaView, View } from 'react-native';
 
 import Botão from '../../components/Botão';
+
+import { styles } from './style';
 
 export default function TelaLoginCadastro({ navigation }) {
 	return (
@@ -27,25 +29,3 @@ export default function TelaLoginCadastro({ navigation }) {
 		</SafeAreaView>
 	);
 }
-  
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		alignItems: 'center',
-		justifyContent: 'center',
-		textAlign: 'center',
-		fontSize: 20,
-	},
-
-	buttonContainer: {
-		marginTop: 150,
-		textAlign: 'center',
-		justifyContent: 'center',
-		alignItems: 'center',
-	},
-
-	TextStyle: {
-		marginTop: 300,
-		fontSize: 20,
-	}
-});

@@ -1,12 +1,12 @@
 import React from 'react';
 import { View } from 'react-native';
 
-export default function TelaPerfil(){
+import { styles } from './style';
 
-	// Const style = StyleSheet.create({})
+export default function TelaPerfil(){
     
 	return (
-		<View>
+		<View style={styles.container}>
 			
 		</View>
 	);

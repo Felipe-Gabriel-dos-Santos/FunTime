@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import { TextInput } from 'react-native-paper';
 
 import Botão from '../../components/Botão';
+
+import { styles } from './style';
 
 export default function TelaCadastro() {
 
@@ -12,24 +14,6 @@ export default function TelaCadastro() {
 	const [password, setPassword] = useState(null);
 	const [passwordTwo, setPasswordTwo] = useState(null);
 	const [date, setDate] = useState(null);
-
-	const styles = StyleSheet.create({
-		view: {
-			flex: 1,
-			justifyContent: 'center',
-			alignItems: 'center',
-		},
-		input:{
-			height: 50,
-			width: 300,
-			textAlign: 'center',
-			marginBottom:8
-		},
-
-		button:{
-			marginTop: 8
-		}
-	});
 
 	return (
 		<View style={styles.view}>
