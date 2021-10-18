@@ -1,12 +1,20 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 
 export default function TelaInicial(){
 
-	// Const style = StyleSheet.create({})
+	const style = StyleSheet.create({
+
+		view: {
+			flex: 1,
+			flexDirection: 'column',
+			alignItems: 'center',
+			justifyContent: 'center',
+		},
+	});
 
 	return (
-		<View>
+		<View style={style.view}>
 			
 		</View>
 	);
