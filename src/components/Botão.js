@@ -1,6 +1,6 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import React from 'react';
-import { StyleSheet, Text, Pressable } from 'react-native';
+import { StyleSheet, Text, TouchableHighlight } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 
 export default function Botão(props) {
@@ -30,10 +30,10 @@ export default function Botão(props) {
 			useNativeDriver
 			duration={2000}
 		>
-			<Pressable onPress={props.onPress}>
+			<TouchableHighlight  underlayColor='none' onPress={props.onPress}>
 				<LinearGradient colors={['#bf00bf', '#bf00bf', '#8303a3']} style={styles.button}>
 					<Text style={styles.text}>{String(props.title)}</Text>
 				</LinearGradient>
-			</Pressable>
+			</TouchableHighlight>
 		</Animatable.View>
 	); }
