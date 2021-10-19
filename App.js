@@ -8,6 +8,8 @@ import TelaCadastro from './src/screens/TelaCadastro/index';
 import TelaLogin from './src/screens/TelaLogin/index';
 import TelaLoginCadastro from './src/screens/TelaLoginCadastro';
 
+import jogoAdição from './src/games/Operações Matemáticas/Adição';
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -39,6 +41,8 @@ export default function App() {
 				<Stack.Screen name="Início / Tela Principal" component={TabBar} options={{headerShown: false}}/>
 				<Stack.Screen name="Cadastro" component={TelaCadastro}/>
 				<Stack.Screen name="Login" component={TelaLogin}/>
+
+				<Stack.Screen name="Adição" component={jogoAdição}/>
 			</Stack.Navigator>
 		</NavigationContainer>
 	);
