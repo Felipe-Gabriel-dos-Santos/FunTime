@@ -9,6 +9,8 @@ export const styles = StyleSheet.create({
 	},
 
 	questionStyle: {
+		marginHorizontal: 20,
+		textAlign: 'center',
 		fontSize: 65,
 		fontWeight: 'bold',
 		marginTop: -450,
@@ -27,10 +29,11 @@ export const styles = StyleSheet.create({
 		height: 70,
 		width: 170,
 		marginBottom: 20,
-		backgroundColor: 'purple',
+		backgroundColor: '#8303a3',
 		borderRadius: 10,
 		borderWidth: 2,
-		borderColor: 'white'
+		borderColor: '#bf00bf',
+		elevation: 3
 	},
 
 	buttonText: {
@@ -38,7 +41,7 @@ export const styles = StyleSheet.create({
 		color: 'white',
 		fontWeight: 'bold',
 		paddingTop: 15,
-		fontSize: 25
+		fontSize: 25,
 	}
 
 });
