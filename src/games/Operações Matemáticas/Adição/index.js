@@ -9,7 +9,6 @@ export default function jogoAdição() {
 	var valorMinimo = 0;
 	var valorMaximo = 10;
 
-	const [resultadoString, setresultadoString] = useState('?');
 	const [numero1, setNumero1] = useState(getRandomInt(valorMinimo, valorMaximo));
 	const [numero2, setNumero2] = useState(getRandomInt(valorMinimo, valorMaximo));
 
@@ -57,7 +56,9 @@ export default function jogoAdição() {
 					useNativeDriver
 					duration={2000}
 				>
-					{numero1}  {'+'}  {numero2} = {resultadoString}
+
+					{numero1}  {'+'}  {numero2} = {'?'}
+
 				</Animatable.Text>
 			</View>
 
@@ -67,10 +68,38 @@ export default function jogoAdição() {
 				useNativeDriver
 				duration={2000}
 			>
-				<TouchableOpacity style={styles.button} onPress={() => VerificaResposta(ListaDeNumeros[0], resultado)}><Text style={styles.buttonText}>{ListaDeNumeros[0]}</Text></TouchableOpacity>
-				<TouchableOpacity style={styles.button} onPress={() => VerificaResposta(ListaDeNumeros[1], resultado)}><Text style={styles.buttonText}>{ListaDeNumeros[1]}</Text></TouchableOpacity>
-				<TouchableOpacity style={styles.button} onPress={() => VerificaResposta(ListaDeNumeros[2], resultado)}><Text style={styles.buttonText}>{ListaDeNumeros[2]}</Text></TouchableOpacity>
-				<TouchableOpacity style={styles.button} onPress={() => VerificaResposta(ListaDeNumeros[3], resultado)}><Text style={styles.buttonText}>{ListaDeNumeros[3]}</Text></TouchableOpacity>
+
+				<TouchableOpacity
+					style={styles.button}
+					onPress={() => VerificaResposta(ListaDeNumeros[0], resultado)}>
+
+					<Text style={styles.buttonText}>{ListaDeNumeros[0]}</Text>
+
+				</TouchableOpacity>
+				
+				<TouchableOpacity
+					style={styles.button}
+					onPress={() => VerificaResposta(ListaDeNumeros[1], resultado)}>
+
+					<Text style={styles.buttonText}>{ListaDeNumeros[1]}</Text>
+
+				</TouchableOpacity>
+				
+				<TouchableOpacity
+					style={styles.button}
+					onPress={() => VerificaResposta(ListaDeNumeros[2], resultado)}>
+
+					<Text style={styles.buttonText}>{ListaDeNumeros[2]}</Text>
+
+				</TouchableOpacity>
+				
+				<TouchableOpacity
+					style={styles.button}
+					onPress={() => VerificaResposta(ListaDeNumeros[3], resultado)}>
+
+					<Text style={styles.buttonText}>{ListaDeNumeros[3]}</Text>
+
+				</TouchableOpacity>
 				
 			</Animatable.View>
 		</View>
