@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, Alert } from 'react-native';
+import { View, TouchableOpacity, Alert } from 'react-native';
 import * as Animatable from 'react-native-animatable';
+
+import Background from '../../../components/Background';
 
 import { styles } from './style';
 
@@ -47,61 +49,103 @@ export default function jogoAdição() {
 	ListaDeNumeros = ListaDeNumeros.sort(() => Math.random() - 0.5);
   
 	return (
-        
-		<View style={styles.container}>
-			<View>
+
+		<Background>
+			<View style={styles.container}>
+				<View>
+					<Animatable.Text
+						style={styles.questionStyle}
+						animation='bounceInDown'
+						useNativeDriver
+						duration={2000}
+					>
+						{numero1}  {'+'}  {numero2} = {'?'}
+
+					</Animatable.Text>
+				</View>
+
 				<Animatable.Text
-					style={styles.questionStyle}
-					animation='bounceInDown'
+					style={styles.questionText}
+					animation='bounceInUp'
+					useNativeDriver
+					duration={2400}
+				>
+				A soma de {numero1} + {numero2} é igual a:
+				</Animatable.Text>
+
+				<Animatable.View
+					style={styles.buttonAlternatives}
+					animation='bounceInUp'
 					useNativeDriver
 					duration={2000}
 				>
 
-					{numero1}  {'+'}  {numero2} = {'?'}
+					<TouchableOpacity
+						style={styles.button}
+						onPress={() => VerificaResposta(ListaDeNumeros[0], resultado)}>
 
-				</Animatable.Text>
+						<Animatable.Text
+							style={styles.buttonText}
+							animation='bounceIn'
+							useNativeDriver
+							duration={2000}
+						>
+							{ListaDeNumeros[0]}
+
+						</Animatable.Text>
+
+					</TouchableOpacity>
+				
+					<TouchableOpacity
+						style={styles.button}
+						onPress={() => VerificaResposta(ListaDeNumeros[1], resultado)}>
+
+						<Animatable.Text
+							style={styles.buttonText}
+							animation='bounceIn'
+							useNativeDriver
+							duration={2000}
+						>
+							{ListaDeNumeros[1]}
+
+						</Animatable.Text>
+
+					</TouchableOpacity>
+				
+					<TouchableOpacity
+						style={styles.button}
+						onPress={() => VerificaResposta(ListaDeNumeros[2], resultado)}>
+
+						<Animatable.Text
+							style={styles.buttonText}
+							animation='bounceIn'
+							useNativeDriver
+							duration={2000}
+						>
+							{ListaDeNumeros[2]}
+
+						</Animatable.Text>
+
+					</TouchableOpacity>
+				
+					<TouchableOpacity
+						style={styles.button}
+						onPress={() => VerificaResposta(ListaDeNumeros[3], resultado)}>
+
+						<Animatable.Text
+							style={styles.buttonText}
+							animation='bounceIn'
+							useNativeDriver
+							duration={2000}
+						>
+							{ListaDeNumeros[3]}
+
+						</Animatable.Text>
+
+					</TouchableOpacity>
+				
+				</Animatable.View>
 			</View>
-
-			<Animatable.View
-				style={styles.buttonAlternatives}
-				animation='bounceIn'
-				useNativeDriver
-				duration={2000}
-			>
-
-				<TouchableOpacity
-					style={styles.button}
-					onPress={() => VerificaResposta(ListaDeNumeros[0], resultado)}>
-
-					<Text style={styles.buttonText}>{ListaDeNumeros[0]}</Text>
-
-				</TouchableOpacity>
-				
-				<TouchableOpacity
-					style={styles.button}
-					onPress={() => VerificaResposta(ListaDeNumeros[1], resultado)}>
-
-					<Text style={styles.buttonText}>{ListaDeNumeros[1]}</Text>
-
-				</TouchableOpacity>
-				
-				<TouchableOpacity
-					style={styles.button}
-					onPress={() => VerificaResposta(ListaDeNumeros[2], resultado)}>
-
-					<Text style={styles.buttonText}>{ListaDeNumeros[2]}</Text>
-
-				</TouchableOpacity>
-				
-				<TouchableOpacity
-					style={styles.button}
-					onPress={() => VerificaResposta(ListaDeNumeros[3], resultado)}>
-
-					<Text style={styles.buttonText}>{ListaDeNumeros[3]}</Text>
-
-				</TouchableOpacity>
-				
-			</Animatable.View>
-		</View>
+		</Background>
 	);
 }

@@ -1,13 +1,17 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
+
+import Background from '../../components/Background';
 
 import { styles } from './style';
 
 export default function TelaInicial(){
 
 	return (
-		<View style={styles.view}>
-			
-		</View>
+		<Background>
+			<View style={styles.view}>
+				<Text>Teste</Text>
+			</View>
+		</Background>
 	);
 }

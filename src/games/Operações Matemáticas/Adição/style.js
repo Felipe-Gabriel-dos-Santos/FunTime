@@ -17,6 +17,15 @@ export const styles = StyleSheet.create({
 		color: 'purple'
 	},
 
+	questionText: {
+		marginHorizontal: 20,
+		textAlign: 'center',
+		fontSize: 25,
+		fontWeight: 'bold',
+		marginBottom: 20,
+		color: '#8a8a8a'
+	},
+
 	buttonAlternatives: {
 		marginBottom: -450,
 		flexDirection: 'row',
