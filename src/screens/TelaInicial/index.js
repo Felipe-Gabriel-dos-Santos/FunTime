@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 
 import Background from '../../components/Background';
 
@@ -10,7 +10,7 @@ export default function TelaInicial(){
 	return (
 		<Background>
 			<View style={styles.view}>
-				<Text>Teste</Text>
+				
 			</View>
 		</Background>
 	);

@@ -15,5 +15,14 @@ export const styles = StyleSheet.create({
 
 	button:{
 		marginTop: 8
+	},
+
+	errorText: {
+		textAlign: 'center',
+		color: '#c40d00',
+		fontSize: 10,
+		marginHorizontal: 10,
+		fontWeight: 'bold',
+		marginBottom: 5
 	}
 });
