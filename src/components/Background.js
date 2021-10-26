@@ -6,6 +6,7 @@ export default function Background(props){
 	const Image = '../../assets/FunTimeBackground.png';
     
 	return (
+		
 		<SafeAreaView style={styles.view}>
 			<ImageBackground source={require(Image)} resizeMode='cover' imageStyle={styles.imageStyle} style={styles.imgBackground}>
 				

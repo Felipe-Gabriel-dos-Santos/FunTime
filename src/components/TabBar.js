@@ -1,4 +1,4 @@
-import { Entypo, Octicons } from '@expo/vector-icons';
+import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
 
@@ -6,14 +6,6 @@ import TelaInicial from '../screens/TelaInicial';
 import TelaPerfil from '../screens/TelaPerfil';
 
 var IconSize = 30;
-
-function FocusSize(IconSize, focused){
-
-	if (focused == true) return IconSize + 10;
-
-	else return IconSize;
-
-}
 
 export default function TabBar() {
 
@@ -23,10 +15,14 @@ export default function TabBar() {
 		<Tab.Navigator screenOptions={headerStyle}>
 
 			<Tab.Screen name="Início" component={TelaInicial} options={{
-				tabBarIcon: ({color, focused}) => (<Entypo name="home" size={FocusSize(IconSize, focused)} color={color} />)}}/>
+				tabBarIcon: ({color, focused}) =>
+					(<MaterialCommunityIcons name={focused ? 'home' : 'home-outline'} size={focused ? IconSize + 15 : IconSize + 5} color={color} />)
+			}}/>
 
 			<Tab.Screen name="Perfil" component={TelaPerfil} options={{
-				tabBarIcon: ({color, focused}) => (<Octicons name="person" size={FocusSize(IconSize, focused)} color={color} />)}}/>
+				tabBarIcon: ({color, focused}) =>
+					(<Ionicons name={focused ? 'person' : 'person-outline'} size={focused ? IconSize + 10 : IconSize} color={color} />)
+			}}/>
 
 		</Tab.Navigator>
 	);}
@@ -49,17 +45,20 @@ const headerStyle = {
 	
 	tabBarShowLabel: false,
 	tabBarActiveTintColor: 'purple',
+	tabBarInactiveTintColor: '#ba9fc4',
 	
 	tabBarStyle: {
 		paddingHorizontal: 10,
+		position: 'absolute',
 		paddingBottom: 5,
-		height: 64,
-		elevation: 10,
+		height: 70,
+		elevation: 7,
 		borderRadius: 15,
 		marginBottom: 20,
 		marginHorizontal: 17,
-		borderWidth: 3,
+		borderWidth: 2,
 		borderColor: '#c0c2c0',
+		
 	},
 	
 };
