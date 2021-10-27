@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import { TextInput } from 'react-native-paper';
 
@@ -73,8 +73,7 @@ export default function TelaCadastro() {
 							setNome(nome);
 							if(nome == '' || ValidaNome(nome) == true) setErroNome(true);
 							else setErroNome(false);
-						}
-						}
+						}}
 						autoCapitalize='sentences'
 						autoCompleteType='name'
 						mode='outlined'
@@ -98,8 +97,7 @@ export default function TelaCadastro() {
 							setEmail(email);
 							if(validaEmail(email) == false) setErroEmail(true);
 							else setErroEmail(false);
-						}
-						}
+						}}
 						mode='outlined'
 						autoCapitalize="none"
 						autoCompleteType="email"
