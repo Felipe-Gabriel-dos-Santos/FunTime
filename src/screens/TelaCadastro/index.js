@@ -7,6 +7,7 @@ import Background from '../../components/Background';
 import Botão from '../../components/Botão';
 
 import { validaEmail, verifica_se_duas_senhas_são_iguais, validaSenha, ValidaNome } from '../../services/Data Validation/email_validation';
+import Usuarios from '../../services/SQLite/Tables/Usuarios';
 import { styles } from './style';
 
 export default function TelaCadastro() {
@@ -22,11 +23,31 @@ export default function TelaCadastro() {
 	const [passwordTwo, setPasswordTwo] = useState('');
 	const [date, setDate] = useState('');
 
+	function generateObjectRegister(name, email, password, date){
+		
+		var DadosCadastro  = {
+			Nome: name,
+			Email: email,
+			Senha: password,
+			Data_Nascimento: date
+		};
+
+		return DadosCadastro;
+	}
+
 	function renderButton() {
 		return (
 			
 			<View style={styles.button}>
-				<Botão title='Cadastrar'onPress={()=>{}}/>
+				<Botão title='Cadastrar'onPress={()=>{
+
+					var ObjCadastro = generateObjectRegister(nome, email, password, date);
+
+					if (Usuarios.Login(email, password) == false) Usuarios.CadastraNoBanco(ObjCadastro);
+					else console.log('O Usuário já existe');
+				
+				}}/>
+
 			</View>
 		);
 	}

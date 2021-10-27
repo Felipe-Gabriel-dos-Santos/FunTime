@@ -7,6 +7,7 @@ import Background from '../../components/Background';
 import Botão from '../../components/Botão';
 
 import { validaEmail, validaSenha } from '../../services/Data Validation/email_validation';
+import Usuarios from '../../services/SQLite/Tables/Usuarios';
 import { styles } from './style';
 
 export default function TelaLogin() {
@@ -21,7 +22,9 @@ export default function TelaLogin() {
 		return (
 			
 			<View style={styles.button}>
-				<Botão title='Login'onPress={()=>{}}/>
+				<Botão title='Login'onPress={()=>{
+					Usuarios.Login(email, password);
+				}}/>
 			</View>
 		);
 	}
