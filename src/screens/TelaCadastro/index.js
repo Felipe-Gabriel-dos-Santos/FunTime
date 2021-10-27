@@ -7,7 +7,7 @@ import Background from '../../components/Background';
 import Botão from '../../components/Botão';
 
 import { validaEmail, verifica_se_duas_senhas_são_iguais, validaSenha, ValidaNome } from '../../services/Data Validation/email_validation';
-import Usuarios from '../../services/SQLite/Tables/Usuarios';
+import Usuários from '../../services/SQLite/Tables/Usuários';
 import { styles } from './style';
 
 export default function TelaCadastro() {
@@ -43,7 +43,7 @@ export default function TelaCadastro() {
 
 					var ObjCadastro = generateObjectRegister(nome, email, password, date);
 
-					if (Usuarios.Login(email, password) == false) Usuarios.CadastraNoBanco(ObjCadastro);
+					if (Usuários.Login(email, password) == false) Usuários.CadastraNoBanco(ObjCadastro);
 					else console.log('O Usuário já existe');
 				
 				}}/>
