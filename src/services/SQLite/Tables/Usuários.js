@@ -1,13 +1,15 @@
+import { useState } from 'react';
+
 import db from '../DB';
 
-function CadastraNoBanco(Obj) {
-
-	db.transaction((tx) => {
+db.transaction((tx) => {
 	
-		tx.executeSql(
-			'CREATE TABLE IF NOT EXISTS Usuarios (IDUsuario INTEGER PRIMARY KEY AUTOINCREMENT, Nome VARCHAR(50) NOT NULL, Email VARCHAR(50) NOT NULL, Senha VARCHAR(50) NOT NULL, Data_Nascimento VARCHAR(10) NOT NULL);'
-		);
-	});
+	tx.executeSql(
+		'CREATE TABLE IF NOT EXISTS Usuarios (IDUsuario INTEGER PRIMARY KEY AUTOINCREMENT, Nome VARCHAR(50) NOT NULL, Email VARCHAR(50) NOT NULL, Senha VARCHAR(50) NOT NULL, Data_Nascimento VARCHAR(10) NOT NULL);'
+	);
+});
+
+function CadastraNoBanco(Obj) {
 
 	db.transaction((tx) => {
 		tx.executeSql(
@@ -34,11 +36,25 @@ function SelectUsuárioById(id){
 				else console.log('Obj not found: id=' + id);
 			}
 		);
+	});
+}
+
+class LoginClass{
+	Id;
+	
+	setId(id) {
+		this.Id = id;
 	}
-	);
+
+	getId() {
+		return this.Id;
+	}
 }
 
 function Login(Email, Senha){
+
+	var FuncId = new LoginClass();
+
 	db.transaction((tx) => {
 		tx.executeSql(
 			'SELECT IDUsuario FROM Usuarios WHERE Email=? AND Senha=?;',
@@ -46,19 +62,29 @@ function Login(Email, Senha){
 			//-----------------------
 			(_, { rows }) => {
 				if (rows.length > 0) {
-					var Id = rows._array[0].IDUsuario;
-
-					return Id;
+					
+					console.log('Executei!');
+					FuncId.setId(true);
+		
+					// FuncId.Id = (rows._array[0].IDUsuario);
 				}
 
 				else {
-					return false;
-					// Não existe o usuário cadastrado!
+					
+					console.log('Executei! 2');
+					FuncId.setId(false);
+				
 				}
 			}
 		);
+
+		return FuncId;
 	}
 	);
+
+	var Id = FuncId.getId();
+
+	return Id;
 }
 
 export default {

@@ -7,10 +7,10 @@ import Background from '../../components/Background';
 import Botão from '../../components/Botão';
 
 import { validaEmail, validaSenha } from '../../services/Data Validation/email_validation';
-import Usuarios from '../../services/SQLite/Tables/Usuarios';
+import Usuários from '../../services/SQLite/Tables/Usuários';
 import { styles } from './style';
 
-export default function TelaLogin() {
+export default function TelaLogin({ navigation }) {
 
 	const [erroEmail, setErroEmail] = useState(false);
 	const [erroSenha, setErroSenha] = useState(false);
@@ -23,7 +23,14 @@ export default function TelaLogin() {
 			
 			<View style={styles.button}>
 				<Botão title='Login'onPress={()=>{
-					Usuarios.Login(email, password);
+
+					if (Usuários.Login(email, password) != false){
+						
+						const Id = Usuários.Login(email, password);
+
+						console.log(Id);
+						navigation.navigate('Início / Tela Principal', {Id_do_Usuário: Id});
+					}
 				}}/>
 			</View>
 		);

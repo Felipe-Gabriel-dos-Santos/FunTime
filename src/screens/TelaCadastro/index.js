@@ -43,9 +43,8 @@ export default function TelaCadastro() {
 
 					var ObjCadastro = generateObjectRegister(nome, email, password, date);
 
-					if (Usuários.Login(email, password) == false) Usuários.CadastraNoBanco(ObjCadastro);
-					else console.log('O Usuário já existe');
-				
+					console.log(Usuários.Login(email, password));
+					// Usuários.CadastraNoBanco(ObjCadastro);
 				}}/>
 
 			</View>
