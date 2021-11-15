@@ -24,8 +24,6 @@ export default function TelaLoginCadastro({ navigation }) {
 			<View style={styles.buttonContainer}>
 				<Botão title="Cadastro" onPress={() => {navigation.navigate('Cadastro');}}/>
 				<Botão title="Login" onPress={() => {navigation.navigate('Login');}}/>
-				{/* Temporario  */}
-				<Botão title="Jogo Adição" onPress={() => {navigation.navigate('Adição');}}/>
 			</View>
 		</SafeAreaView>
 	);

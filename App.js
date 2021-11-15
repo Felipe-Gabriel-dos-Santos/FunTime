@@ -5,6 +5,7 @@ import React from 'react';
 import TabBar from './src/components/TabBar';
 
 import TelaCadastro from './src/screens/TelaCadastro/index';
+import TelaInicial from './src/screens/TelaInicial';
 import TelaLogin from './src/screens/TelaLogin/index';
 import TelaLoginCadastro from './src/screens/TelaLoginCadastro';
 
@@ -38,6 +39,7 @@ export default function App() {
 		<NavigationContainer>
 			<Stack.Navigator screenOptions={headerStyle}>
 				<Stack.Screen name="Início / Tela Principal" component={TabBar} options={{headerShown: false}}/>
+				<Stack.Screen name="Início" component={TelaInicial}/>
 				<Stack.Screen name="Tela Login / Cadastro" component={TelaLoginCadastro} options={{headerShown: false, animation: 'default'}}/>
 				<Stack.Screen name="Cadastro" component={TelaCadastro}/>
 				<Stack.Screen name="Login" component={TelaLogin}/>
