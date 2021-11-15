@@ -43,8 +43,8 @@ export default function TelaCadastro() {
 
 					var ObjCadastro = generateObjectRegister(nome, email, password, date);
 
-					console.log(Usuários.Login(email, password));
-					// Usuários.CadastraNoBanco(ObjCadastro);
+					Usuários.CadastraNoBanco(ObjCadastro);
+					
 				}}/>
 
 			</View>

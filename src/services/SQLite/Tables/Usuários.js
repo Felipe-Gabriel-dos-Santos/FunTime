@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import db from '../DB';
 
 db.transaction((tx) => {
@@ -13,16 +11,34 @@ function CadastraNoBanco(Obj) {
 
 	db.transaction((tx) => {
 		tx.executeSql(
-			'INSERT INTO Usuarios (Nome, Email, Senha, Data_Nascimento) values (?, ?, ?, ?);',
-			[Obj.Nome, Obj.Email, Obj.Senha, Obj.Data_Nascimento],
+			'SELECT IDUsuario FROM Usuarios WHERE Email=? AND Senha=?;',
+			[Obj.Email, Obj.Senha],
 			//-----------------------
-			(_, { rowsAffected, insertId }) => {
-				if (rowsAffected > 0) console.log(insertId);
-				else console.log('Error inserting obj: ' + JSON.stringify(Obj)); // Insert falhou
-			}
+			(_, { rows }) => {
+				if (rows.length > 0) {
+
+					console.log('O usuário ja existe!');
+
+				}
+
+				else {
+
+					tx.executeSql(
+						'INSERT INTO Usuarios (Nome, Email, Senha, Data_Nascimento) values (?, ?, ?, ?);',
+						[Obj.Nome, Obj.Email, Obj.Senha, Obj.Data_Nascimento],
+						(_, { rowsAffected, insertId }) => {
+
+							if (rowsAffected > 0) console.log(insertId);
+
+							else console.log('Error inserting obj: ' + JSON.stringify(Obj)); // Insert falhou
 							
+						});
+				
+				}
+			}
 		);
-	});
+	}
+	);
 }
 
 function SelectUsuárioById(id){
@@ -39,56 +55,7 @@ function SelectUsuárioById(id){
 	});
 }
 
-class LoginClass{
-	Id;
-	
-	setId(id) {
-		this.Id = id;
-	}
-
-	getId() {
-		return this.Id;
-	}
-}
-
-function Login(Email, Senha){
-
-	var FuncId = new LoginClass();
-
-	db.transaction((tx) => {
-		tx.executeSql(
-			'SELECT IDUsuario FROM Usuarios WHERE Email=? AND Senha=?;',
-			[Email, Senha],
-			//-----------------------
-			(_, { rows }) => {
-				if (rows.length > 0) {
-					
-					console.log('Executei!');
-					FuncId.setId(true);
-		
-					// FuncId.Id = (rows._array[0].IDUsuario);
-				}
-
-				else {
-					
-					console.log('Executei! 2');
-					FuncId.setId(false);
-				
-				}
-			}
-		);
-
-		return FuncId;
-	}
-	);
-
-	var Id = FuncId.getId();
-
-	return Id;
-}
-
 export default {
 	CadastraNoBanco,
 	SelectUsuárioById,
-	Login
 };
