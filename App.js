@@ -7,7 +7,6 @@ import TabBar from './src/components/TabBar';
 import TelaCadastro from './src/screens/TelaCadastro/index';
 import TelaInicial from './src/screens/TelaInicial';
 import TelaLogin from './src/screens/TelaLogin/index';
-import TelaLoginCadastro from './src/screens/TelaLoginCadastro';
 
 import jogoAdição from './src/games/Operações Matemáticas/Adição';
 
