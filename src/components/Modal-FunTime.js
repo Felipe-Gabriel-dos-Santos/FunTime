@@ -2,12 +2,12 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableHighlight, Modal } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 
-const ModalFunTime = ({ show, close, title, text }) => {
+const ModalFunTime = (props) => {
 	return (
 		<Modal
 			animationType="fade"
 			transparent={true}
-			visible={show}
+			visible={props.show}
 			statusBarTranslucent={true}
 			
 		>
@@ -20,13 +20,12 @@ const ModalFunTime = ({ show, close, title, text }) => {
 					duration={750}
 				>
 
-					<Text style={styles.modalTitle}>{title}</Text>
-					<Text style={styles.modalText}>{text}</Text>
+					{props.children}
 
 					<TouchableHighlight
 						underlayColor='none'
 						style={[styles.button, styles.buttonClose]}
-						onPress={close}
+						onPress={props.close}
 					>
 						<Text style={styles.textStyle}>Fechar</Text>
 					</TouchableHighlight>

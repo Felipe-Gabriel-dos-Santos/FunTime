@@ -40,11 +40,10 @@ export default function App() {
 			<Stack.Navigator screenOptions={headerStyle}>
 				<Stack.Screen name="Início / Tela Principal" component={TabBar} options={{headerShown: false}}/>
 				<Stack.Screen name="Início" component={TelaInicial}/>
-				<Stack.Screen name="Tela Login / Cadastro" component={TelaLoginCadastro} options={{headerShown: false, animation: 'default'}}/>
 				<Stack.Screen name="Cadastro" component={TelaCadastro}/>
 				<Stack.Screen name="Login" component={TelaLogin}/>
-
-				<Stack.Screen name="Adição" component={jogoAdição}/>
+			
+				<Stack.Screen name="Jogo Adição" component={jogoAdição}/>
 			</Stack.Navigator>
 		</NavigationContainer>
 	);
