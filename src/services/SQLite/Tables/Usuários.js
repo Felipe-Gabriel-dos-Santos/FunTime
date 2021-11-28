@@ -1,3 +1,4 @@
+import UsuárioClass from '../../../classes/Usuários';
 import db from '../DB';
 
 db.transaction((tx) => {
@@ -7,12 +8,12 @@ db.transaction((tx) => {
 	);
 });
 
-function CadastraNoBanco(Obj) {
+function CadastraNoBanco(Usuário) {
 
 	db.transaction((tx) => {
 		tx.executeSql(
-			'SELECT IDUsuario FROM Usuarios WHERE Email=? AND Senha=?;',
-			[Obj.Email, Obj.Senha],
+			'SELECT IDUsuario FROM Usuarios WHERE Email=?;',
+			[Usuário.Email],
 			//-----------------------
 			(_, { rows }) => {
 				if (rows.length > 0) {
@@ -25,12 +26,16 @@ function CadastraNoBanco(Obj) {
 
 					tx.executeSql(
 						'INSERT INTO Usuarios (Nome, Email, Senha, Data_Nascimento) values (?, ?, ?, ?);',
-						[Obj.Nome, Obj.Email, Obj.Senha, Obj.Data_Nascimento],
+
+						[Usuário.Nome, Usuário.Email, Usuário.Senha, Usuário.Data_Nascimento],
+
 						(_, { rowsAffected, insertId }) => {
 
-							if (rowsAffected > 0) console.log(insertId);
+							if (rowsAffected > 0) {
+								UsuárioClass.Id = parseInt(insertId);
+							}
 
-							else console.log('Error inserting obj: ' + JSON.stringify(Obj)); // Insert falhou
+							else console.log('Error inserting obj: ' + JSON.stringify(Usuário)); // Insert falhou
 							
 						});
 				
