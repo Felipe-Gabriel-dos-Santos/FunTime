@@ -11,7 +11,7 @@ import { validaEmail, verifica_se_duas_senhas_são_iguais, validaSenha, ValidaNo
 import Usuários from '../../services/SQLite/Tables/Usuários';
 import { styles } from './style';
 
-export default function TelaCadastro() {
+export default function TelaCadastro({ navigation }) {
 
 	const [erroNome, setErroNome] = useState(false);
 	const [erroEmail, setErroEmail] = useState(false);
@@ -35,7 +35,7 @@ export default function TelaCadastro() {
 					Usuário.Senha = password;
 					Usuário.Data_Nascimento = date;
 
-					Usuários.CadastraNoBanco(Usuário);
+					Usuários.CadastraNoBanco(Usuário, navigation);
 					
 				}}/>
 

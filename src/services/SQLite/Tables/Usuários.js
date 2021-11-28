@@ -8,7 +8,7 @@ db.transaction((tx) => {
 	);
 });
 
-function CadastraNoBanco(Usuário) {
+function CadastraNoBanco(Usuário, navigation) {
 
 	db.transaction((tx) => {
 		tx.executeSql(
@@ -33,6 +33,8 @@ function CadastraNoBanco(Usuário) {
 
 							if (rowsAffected > 0) {
 								UsuárioClass.Id = parseInt(insertId);
+								UsuárioClass.setStatus('Logado');
+								navigation.navigate('Início / Tela Principal');
 							}
 
 							else console.log('Error inserting obj: ' + JSON.stringify(Usuário)); // Insert falhou

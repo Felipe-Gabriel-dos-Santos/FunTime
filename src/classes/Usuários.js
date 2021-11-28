@@ -1,13 +1,18 @@
 class Usuários {
-	constructor( Id, Imagem, Nome, Email, Senha, Data_Nascimento ){
+	constructor( Id, Imagem, Nome, Email, Senha, Data_Nascimento, Status){
 		this.Id = Id,
 		this.Imagem = Imagem,
 		this.Nome = Nome,
 		this.Email = Email,
 		this.Senha = Senha,
-		this.Data_Nascimento = Data_Nascimento;
+		this.Data_Nascimento = Data_Nascimento,
+		this.Status = Status;
 	}
-	
+
+	setStatus(Status){
+		if (Status == 'Logado') this.Status = Status;
+	}
+
 	Nome_Completo(){
 		return this.Nome.replace(/\w\S*/g, (w) => (w.replace(/^\w/, (c) => c.toUpperCase())));
 	}
@@ -45,6 +50,6 @@ class Usuários {
 
 }
 
-const Usuário = new Usuários(null, '../../assets/default-user-image.png', '', '', '', '');
+const Usuário = new Usuários(null, '../../assets/default-user-image.png', '', '', '', '', 'Sem Login');
 
 export default Usuário;
