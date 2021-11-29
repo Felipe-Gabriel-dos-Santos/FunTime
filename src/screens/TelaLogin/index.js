@@ -7,7 +7,7 @@ import Background from '../../components/Background';
 import Botão from '../../components/Botão';
 
 import { validaEmail, validaSenha } from '../../services/Data Validation/email_validation';
-import Usuários from '../../services/SQLite/Tables/Usuários';
+import Usuários from '../../services/SQLite/Tables/UsuáriosDB';
 import { styles } from './style';
 
 export default function TelaLogin({ navigation }) {

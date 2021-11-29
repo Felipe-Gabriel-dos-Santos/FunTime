@@ -8,7 +8,7 @@ import Botão from '../../components/Botão';
 
 import Usuário from '../../classes/Usuários';
 import { validaEmail, verifica_se_duas_senhas_são_iguais, validaSenha, ValidaNome } from '../../services/Data Validation/email_validation';
-import Usuários from '../../services/SQLite/Tables/Usuários';
+import Usuários from '../../services/SQLite/Tables/UsuáriosDB';
 import { styles } from './style';
 
 export default function TelaCadastro({ navigation }) {
