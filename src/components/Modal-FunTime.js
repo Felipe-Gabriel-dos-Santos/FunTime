@@ -27,7 +27,7 @@ const ModalFunTime = (props) => {
 						style={[styles.button, styles.buttonClose]}
 						onPress={props.close}
 					>
-						<Text style={styles.textStyle}>Fechar</Text>
+						<Text style={styles.textStyle}>{props.buttonCloseText}</Text>
 					</TouchableHighlight>
 				</Animatable.View>
 
@@ -48,8 +48,8 @@ const styles = StyleSheet.create({
 		margin: 20,
 		backgroundColor: 'white',
 		borderRadius: 20,
-		padding: 35,
-		paddingHorizontal: 85,
+		padding: 25,
+		paddingHorizontal: 70,
 		alignItems: 'center',
 		shadowColor: '#000',
 		shadowOffset: {
@@ -74,7 +74,8 @@ const styles = StyleSheet.create({
 		color: 'purple',
 		fontWeight: 'bold',
 		textAlign: 'center',
-		marginBottom: -15
+		marginBottom: -10,
+		fontSize: 15
 	},
 	modalTitle: {
 		marginBottom: 25,

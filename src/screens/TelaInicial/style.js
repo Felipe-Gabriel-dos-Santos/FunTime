@@ -23,8 +23,14 @@ export const styles = StyleSheet.create({
 		marginBottom: 20
 	},
 
-	button: {
-		fontSize: 5
+	ModalText: {
+		paddingTop: 10,
+		paddingBottom: 3,
+		color: 'purple',
+		fontWeight: '500',
+		textAlign: 'center',
+		marginBottom: -15,
+		fontSize: 15
 	}
 
 });

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { View, Image } from 'react-native';
+import { View, Image, Text } from 'react-native';
 
 import Background from '../../components/Background';
 import Botão from '../../components/Botão';
@@ -24,9 +24,12 @@ export default function TelaInicial({ navigation }){
 			<ModalFunTime
 				show={modal}
 				close={() => setModal(false)}
+				buttonCloseText={'Agora não'}
 			>
 
 				<Image source={require('../../../assets/Logo-FunTime.png')} resizeMode='cover' style={styles.image}/>
+
+				<Text style={styles.ModalText}>Deseja fazer login / Cadastro?</Text>
 
 				<View style={styles.buttonContainer}>
 				
