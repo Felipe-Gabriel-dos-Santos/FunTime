@@ -1,0 +1,60 @@
+import { StyleSheet } from 'react-native';
+
+export const styles = StyleSheet.create({
+
+	container: {
+		flex: 1,
+		justifyContent: 'center',
+		alignItems: 'center'
+	},
+
+	Image: {
+		height: 250,
+		marginHorizontal: 20,
+		marginTop: -450,
+		borderRadius: 15,
+		shadowColor: '#000',
+		shadowOffset: {
+			width: 0,
+			height: 2
+		},
+		shadowOpacity: 0.25,
+		shadowRadius: 4,
+	},
+
+	buttonAlternatives: {
+		marginBottom: -450,
+		flexDirection: 'row',
+		alignContent: 'flex-end',
+		marginHorizontal: 20,
+		justifyContent: 'space-between',
+		flexWrap: 'wrap'
+	},
+	button: {
+		height: 70,
+		width: 170,
+		marginBottom: 20,
+		backgroundColor: '#8303a3',
+		borderRadius: 10,
+		borderWidth: 2,
+		borderColor: '#bf00bf',
+		elevation: 3
+	},
+
+	buttonText: {
+		textAlign: 'center',
+		color: 'white',
+		fontWeight: 'bold',
+		paddingTop: 15,
+		fontSize: 25,
+	},
+
+	questionText: {
+		marginHorizontal: 20,
+		textAlign: 'center',
+		fontSize: 25,
+		fontWeight: 'bold',
+		marginBottom: 20,
+		color: '#8a8a8a'
+	},
+});

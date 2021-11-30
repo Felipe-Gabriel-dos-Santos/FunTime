@@ -9,7 +9,7 @@ import TelaInicial from './src/screens/TelaInicial';
 import TelaLogin from './src/screens/TelaLogin/index';
 
 import jogoAdição from './src/games/Operações Matemáticas/Adição';
-import jogoPortuguês from './src/games/Português/Acertar Animal da Imagem/index';
+import jogoPortuguês from './src/games/Português/AcertarAnimal-Imagem/index';
 
 const Stack = createNativeStackNavigator();
 
