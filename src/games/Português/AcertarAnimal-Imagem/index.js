@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { View, Image, Text, TouchableOpacity, Alert } from 'react-native';
+import { View, TouchableOpacity, Alert } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 
 import Background from '../../../components/Background';
