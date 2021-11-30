@@ -6,6 +6,7 @@ import Botão from '../../components/Botão';
 import IniciarJogo from '../../components/IniciarJogo';
 import ModalFunTime from '../../components/Modal-FunTime';
 
+import Logo from '../../../assets/Logo-FunTime.png';
 import { styles } from './style';
 
 export default function TelaInicial({ navigation }){
@@ -18,6 +19,7 @@ export default function TelaInicial({ navigation }){
 			<View style={styles.container}>
 				
 				<IniciarJogo name={'Jogo Adição'} text={'Jogo de soma: (Ex.: 2 + 2 = 4)'} routeName={'Jogo Adição'} navigation={navigation}/>
+				<IniciarJogo name={'Jogo Português'} text={'Acertar animal da Imagem'} routeName={'Jogo Português'} navigation={navigation}/>
 				
 			</View>
 			
@@ -27,7 +29,7 @@ export default function TelaInicial({ navigation }){
 				buttonCloseText={'Agora não'}
 			>
 
-				<Image source={require('../../../assets/Logo-FunTime.png')} resizeMode='cover' style={styles.image}/>
+				<Image source={Logo} resizeMode='cover' style={styles.image}/>
 
 				<Text style={styles.ModalText}>Deseja fazer login / Cadastro?</Text>
 

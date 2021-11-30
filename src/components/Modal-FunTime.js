@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableHighlight, Modal } from 'react-native'
 import * as Animatable from 'react-native-animatable';
 
 const ModalFunTime = (props) => {
+
 	return (
 		<Modal
 			animationType="fade"
@@ -26,6 +27,7 @@ const ModalFunTime = (props) => {
 						underlayColor='none'
 						style={[styles.button, styles.buttonClose]}
 						onPress={props.close}
+						
 					>
 						<Text style={styles.textStyle}>{props.buttonCloseText}</Text>
 					</TouchableHighlight>

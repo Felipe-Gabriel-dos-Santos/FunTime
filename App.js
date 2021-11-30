@@ -9,6 +9,7 @@ import TelaInicial from './src/screens/TelaInicial';
 import TelaLogin from './src/screens/TelaLogin/index';
 
 import jogoAdição from './src/games/Operações Matemáticas/Adição';
+import jogoPortuguês from './src/games/Português/Acertar Animal da Imagem/index';
 
 const Stack = createNativeStackNavigator();
 
@@ -43,6 +44,7 @@ export default function App() {
 				<Stack.Screen name="Login" component={TelaLogin}/>
 			
 				<Stack.Screen name="Jogo Adição" component={jogoAdição}/>
+				<Stack.Screen name="Jogo Português" component={jogoPortuguês}/>
 			</Stack.Navigator>
 		</NavigationContainer>
 	);

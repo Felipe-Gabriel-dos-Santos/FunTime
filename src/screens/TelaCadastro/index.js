@@ -1,14 +1,18 @@
-import React, { useState } from 'react';
-import { View } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Modal, Text, TouchableHighlight } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import { TextInput } from 'react-native-paper';
 
 import Background from '../../components/Background';
 import Botão from '../../components/Botão';
 
+import Lottie from 'lottie-react-native';
+
+import ErrorAnimation from '../../../assets/Animations/animation-error.json';
+import SuccessAnimation from '../../../assets/Animations/animation-success.json';
 import Usuário from '../../classes/Usuários';
 import { validaEmail, verifica_se_duas_senhas_são_iguais, validaSenha, ValidaNome } from '../../services/Data Validation/email_validation';
-import Usuários from '../../services/SQLite/Tables/UsuáriosDB';
+import db from '../../services/SQLite/DB';
 import { styles } from './style';
 
 export default function TelaCadastro({ navigation }) {
@@ -24,6 +28,81 @@ export default function TelaCadastro({ navigation }) {
 	const [passwordTwo, setPasswordTwo] = useState('');
 	const [date, setDate] = useState('');
 
+	const [ModalSucessoCadastro, setModalSucessoCadastro] = useState(false);
+
+	const [ModalErroCadastro, setModalErroCadastro] = useState(false);
+
+	const [ErrorText, setErrorText] = useState('');
+
+	var TextError = '';
+
+	useEffect(() => {
+
+		if(ModalSucessoCadastro == true) {
+			setTimeout(() => {
+				navigation.navigate('Início / Tela Principal');
+			}, 1700);
+		}
+		
+	}
+	, [ModalSucessoCadastro]);
+
+	useEffect(() => {
+
+		if(ModalErroCadastro == true) {
+			setTimeout(() => {
+				setModalErroCadastro(false);
+			}, 2000);
+		}
+		
+	}
+	, [ModalErroCadastro]);
+
+	function CadastraNoBanco(Usuário) {
+
+		db.transaction((tx) => {
+			tx.executeSql(
+				'SELECT IDUsuario FROM Usuarios WHERE Email=?;',
+				[Usuário.Email],
+				//-----------------------
+				(_, { rows }) => {
+					if (rows.length > 0) {
+	
+						setErrorText('Parece que o Usuário já existe, tente fazer Login!');
+						setModalErroCadastro(true);
+	
+					}
+	
+					else {
+	
+						tx.executeSql(
+							'INSERT INTO Usuarios (Nome, Email, Senha, Data_Nascimento) values (?, ?, ?, ?);',
+	
+							[Usuário.Nome, Usuário.Email, Usuário.Senha, Usuário.Data_Nascimento],
+	
+							(_, { rowsAffected, insertId }) => {
+	
+								if (rowsAffected > 0) {
+	
+									Usuário.Id = parseInt(insertId);
+									Usuário.setStatus('Logado');
+									setModalSucessoCadastro(true);
+								}
+	
+								else {
+									setErrorText('Erro ao fazer cadastro no Banco de Dados!');
+									setModalErroCadastro(true);
+								}
+								
+							});
+					
+					}
+				}
+			);
+		}
+		);
+	}
+
 	function renderButton() {
 		return (
 			
@@ -35,7 +114,7 @@ export default function TelaCadastro({ navigation }) {
 					Usuário.Senha = password;
 					Usuário.Data_Nascimento = date;
 
-					Usuários.CadastraNoBanco(Usuário, navigation);
+					CadastraNoBanco(Usuário);
 					
 				}}/>
 
@@ -182,6 +261,84 @@ export default function TelaCadastro({ navigation }) {
 						mode='outlined'
 						theme={{ colors: { primary: 'purple'}}}
 					/>
+
+					<Modal
+						animationType="fade"
+						transparent={true}
+						visible={ModalSucessoCadastro}
+						statusBarTranslucent={true}
+					>
+						<View style={styles.centeredView}>
+
+							<Animatable.View
+								style={styles.modalView}
+								animation='zoomInUp'
+								useNativeDriver
+								duration={750}
+							>
+
+								<Animatable.View
+									animation='zoomInUp'
+									useNativeDriver
+									duration={70}
+								>
+									<Lottie
+										style={{width: 100, height: 100}}
+										resizeMode='contain'
+										source={SuccessAnimation}
+										autoPlay
+										autoSize
+										loop={false}
+									/>
+
+									<Text style={styles.modalSuccessTitle}>Sucesso!</Text>
+
+								</Animatable.View>
+								
+							</Animatable.View>
+
+						</View>
+					</Modal>
+
+					<Modal
+						animationType="fade"
+						transparent={true}
+						visible={ModalErroCadastro}
+						statusBarTranslucent={true}
+					>
+						<View style={styles.centeredView}>
+
+							<Animatable.View
+								style={styles.modalView}
+								animation='zoomInUp'
+								useNativeDriver
+								duration={750}
+							>
+
+								<Animatable.View
+									animation='zoomInUp'
+									useNativeDriver
+									duration={70}
+								>
+									<Lottie
+										style={{width: 105, height: 105, justifyContent: 'center', alignContent: 'center', paddingLeft: '26.5%'}}
+										resizeMode='contain'
+										source={ErrorAnimation}
+										autoPlay
+										autoSize
+										loop={false}
+									/>
+
+									<Text style={styles.modalErrorTitle}>Erro!</Text>
+									<Text style={styles.modalErrorText}>{ErrorText}</Text>
+
+								</Animatable.View>
+								
+							</Animatable.View>
+
+						</View>
+					</Modal>
+
 				</Animatable.View>
 
 				{

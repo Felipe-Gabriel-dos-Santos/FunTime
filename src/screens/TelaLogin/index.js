@@ -6,8 +6,9 @@ import { TextInput } from 'react-native-paper';
 import Background from '../../components/Background';
 import Botão from '../../components/Botão';
 
+import Usuário from '../../classes/Usuários';
 import { validaEmail, validaSenha } from '../../services/Data Validation/email_validation';
-import Usuários from '../../services/SQLite/Tables/UsuáriosDB';
+import db from '../../services/SQLite/DB';
 import { styles } from './style';
 
 export default function TelaLogin({ navigation }) {
@@ -18,19 +19,38 @@ export default function TelaLogin({ navigation }) {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 
+	function Login() {
+		db.transaction((tx) => {
+			tx.executeSql(
+				'SELECT IDUsuario FROM Usuarios WHERE Email=? AND Senha=?;',
+				[Usuário.Email, Usuário.Senha],
+				(_, { rows }) => {
+	
+					if (rows > 0) {
+
+						console.log(rows.item(0).Nome);
+					}
+
+					else {
+						console.log('erro');
+					}
+					
+				});
+		}
+		);
+	}
+
 	function renderButton() {
 		return (
 			
 			<View style={styles.button}>
 				<Botão title='Login'onPress={()=>{
 
-					if (Usuários.Login(email, password) != false){
+					Usuário.Email = email;
+					Usuário.Senha = password;
 						
-						const Id = Usuários.Login(email, password);
-
-						console.log(Id);
-						navigation.navigate('Início / Tela Principal', {Id_do_Usuário: Id});
-					}
+					Login(Usuário);
+					
 				}}/>
 			</View>
 		);
