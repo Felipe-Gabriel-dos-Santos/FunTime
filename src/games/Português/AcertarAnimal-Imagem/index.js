@@ -6,19 +6,19 @@ import Background from '../../../components/Background';
 
 import { styles } from './styles';
 
-import Cachorro from './Imagens/cachorro.jpg';
+import Cachorro from './Imagens/cachorro.png';
 import Coelho from './Imagens/coelho.png';
-import Crocodilo from './Imagens/crocodilo.jpg';
+import Crocodilo from './Imagens/crocodilo.png';
 import Gato from './Imagens/gato.png';
-import Girafa from './Imagens/girafa.jpg';
-import Hipopótamo from './Imagens/hipopotamo.jpg';
-import Leão from './Imagens/leão.jpg';
-import Papagaio from './Imagens/papagaio.jpg';
+import Girafa from './Imagens/girafa.png';
+import Hipopótamo from './Imagens/hipopotamo.png';
+import Leão from './Imagens/leão.png';
+import Papagaio from './Imagens/papagaio.png';
 import Pinguim from './Imagens/pinguim.png';
-import Porco from './Imagens/porco.jpg';
+import Porco from './Imagens/porco.png';
 import Rato from './Imagens/rato.png';
 import Sapo from './Imagens/sapo.png';
-import Urso from './Imagens/urso.jpg';
+import Urso from './Imagens/urso.png';
 import Vaca from './Imagens/vaca.png';
 
 export default function jogoPortuguês(){
@@ -211,7 +211,6 @@ export default function jogoPortuguês(){
 							duration={2000}
 						>
 							{ListaAlternativas[3]}
-							{console.log(ListaAlternativas[3])}
 
 						</Animatable.Text>
 
