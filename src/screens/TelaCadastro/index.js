@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { View, Modal, Text, TouchableHighlight } from 'react-native';
+import { View, Modal, Text } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import { TextInput } from 'react-native-paper';
 
 import Background from '../../components/Background';
 import Botão from '../../components/Botão';
+
+import { styles } from './style';
 
 import Lottie from 'lottie-react-native';
 
@@ -13,7 +15,6 @@ import SuccessAnimation from '../../../assets/Animations/animation-success.json'
 import Usuário from '../../classes/Usuários';
 import { validaEmail, verifica_se_duas_senhas_são_iguais, validaSenha, ValidaNome } from '../../services/Data Validation/email_validation';
 import db from '../../services/SQLite/DB';
-import { styles } from './style';
 
 export default function TelaCadastro({ navigation }) {
 
@@ -33,8 +34,6 @@ export default function TelaCadastro({ navigation }) {
 	const [ModalErroCadastro, setModalErroCadastro] = useState(false);
 
 	const [ErrorText, setErrorText] = useState('');
-
-	var TextError = '';
 
 	useEffect(() => {
 

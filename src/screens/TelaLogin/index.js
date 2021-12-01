@@ -1,15 +1,21 @@
-import React, { useState } from 'react';
-import { View } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Modal, Text } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import { TextInput } from 'react-native-paper';
 
 import Background from '../../components/Background';
 import Botão from '../../components/Botão';
 
+import { styles } from './style';
+
+import Lottie from 'lottie-react-native';
+
+import ErrorAnimation from '../../../assets/Animations/animation-error.json';
+import SuccessAnimation from '../../../assets/Animations/animation-success.json';
 import Usuário from '../../classes/Usuários';
+import { useUser } from '../../context/provider';
 import { validaEmail, validaSenha } from '../../services/Data Validation/email_validation';
 import db from '../../services/SQLite/DB';
-import { styles } from './style';
 
 export default function TelaLogin({ navigation }) {
 
@@ -19,26 +25,53 @@ export default function TelaLogin({ navigation }) {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 
-	function Login() {
-		db.transaction((tx) => {
-			tx.executeSql(
-				'SELECT IDUsuario FROM Usuarios WHERE Email=? AND Senha=?;',
-				[Usuário.Email, Usuário.Senha],
-				(_, { rows }) => {
-	
-					if (rows > 0) {
+	const [ModalSucessoCadastro, setModalSucessoCadastro] = useState(false);
 
-						console.log(rows.item(0).Nome);
-					}
+	const [ModalErroCadastro, setModalErroCadastro] = useState(false);
 
-					else {
-						console.log('erro');
-					}
-					
-				});
+	const [ErrorText, setErrorText] = useState('');
+
+	// Const [{User, setUser}] = useUser();
+
+	useEffect(() => {
+
+		if(ModalSucessoCadastro == true) {
+			setTimeout(() => {
+				navigation.navigate('Início / Tela Principal');
+			}, 1700);
 		}
-		);
+		
 	}
+	, [ModalSucessoCadastro]);
+
+	useEffect(() => {
+
+		if(ModalErroCadastro == true) {
+			setTimeout(() => {
+				setModalErroCadastro(false);
+			}, 2000);
+		}
+		
+	}
+	, [ModalErroCadastro]);
+
+	const Login = (Usuário) => {
+		return new Promise((resolve, reject) => {
+			db.transaction((tx) => {
+			
+				tx.executeSql(
+					'SELECT IDUsuario, Nome, Email, Senha, Data_Nascimento FROM Usuarios WHERE Email=? AND Senha=?;',
+					[Usuário.Email, Usuário.Senha],
+					//-----------------------
+					(_, { rows }) => {
+						if (rows.length > 0) resolve(rows.item(0));
+						else reject('Usuário não encontrado');
+					},
+					(_, error) => reject(error)
+				);
+			});
+		});
+	};
 
 	function renderButton() {
 		return (
@@ -49,9 +82,30 @@ export default function TelaLogin({ navigation }) {
 					Usuário.Email = email;
 					Usuário.Senha = password;
 						
-					Login(Usuário);
+					Login( Usuário )
+						.then( Obj =>  {
+							// SetUser({
+							// 	Id: Obj.IDUsuario,
+							// 	Nome: Obj.Nome,
+							// 	Email: Obj.Email,
+							// 	Senha: Obj.Senha,
+							// 	DataNascimento: Obj.Data_Nascimento,
+							// 	Logado: true
+							// });
+
+							if (Obj.IDUsuario) {
+								console.log(Obj);
+								setModalSucessoCadastro(true);
+							}
+						
+						})
+						.catch( err => {
+							setErrorText(String(err));
+							setModalErroCadastro(true);
+						} );
 					
 				}}/>
+				
 			</View>
 		);
 	}
@@ -127,6 +181,83 @@ export default function TelaLogin({ navigation }) {
 					{erroSenha ? renderErrorText('password') : <View/>}
 
 				</Animatable.View>
+
+				<Modal
+					animationType="fade"
+					transparent={true}
+					visible={ModalSucessoCadastro}
+					statusBarTranslucent={true}
+				>
+					<View style={styles.centeredView}>
+
+						<Animatable.View
+							style={styles.modalView}
+							animation='zoomInUp'
+							useNativeDriver
+							duration={750}
+						>
+
+							<Animatable.View
+								animation='zoomInUp'
+								useNativeDriver
+								duration={70}
+							>
+								<Lottie
+									style={{width: 100, height: 100}}
+									resizeMode='contain'
+									source={SuccessAnimation}
+									autoPlay
+									autoSize
+									loop={false}
+								/>
+
+								<Text style={styles.modalSuccessTitle}>Sucesso!</Text>
+
+							</Animatable.View>
+								
+						</Animatable.View>
+
+					</View>
+				</Modal>
+
+				<Modal
+					animationType="fade"
+					transparent={true}
+					visible={ModalErroCadastro}
+					statusBarTranslucent={true}
+				>
+					<View style={styles.centeredView}>
+
+						<Animatable.View
+							style={styles.modalView}
+							animation='zoomInUp'
+							useNativeDriver
+							duration={750}
+						>
+
+							<Animatable.View
+								animation='zoomInUp'
+								useNativeDriver
+								duration={70}
+							>
+								<Lottie
+									style={{width: 115, height: 115,  paddingLeft: '11%'}}
+									resizeMode='contain'
+									source={ErrorAnimation}
+									autoPlay
+									autoSize
+									loop={false}
+								/>
+
+								<Text style={styles.modalErrorTitle}>Erro!</Text>
+								<Text style={styles.modalErrorText}>{ErrorText}</Text>
+
+							</Animatable.View>
+								
+						</Animatable.View>
+
+					</View>
+				</Modal>
 			
 				{
 					email != ''

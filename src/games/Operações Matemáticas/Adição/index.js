@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
-import { View, TouchableOpacity, Alert } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, TouchableOpacity, Alert, Text, Modal } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 
 import Background from '../../../components/Background';
 
 import { styles } from './style';
+
+import Lottie from 'lottie-react-native';
+
+import ErrorAnimation from '../../../../assets/Animations/animation-error.json';
+import SuccessAnimation from '../../../../assets/Animations/animation-success.json';
 
 export default function jogoAdição() {
 
@@ -13,6 +18,32 @@ export default function jogoAdição() {
 
 	const [numero1, setNumero1] = useState(getRandomInt(valorMinimo, valorMaximo));
 	const [numero2, setNumero2] = useState(getRandomInt(valorMinimo, valorMaximo));
+
+	const [ModalAcerto, setModalAcerto] = useState(false);
+
+	const [ModalErro, setModalErro] = useState(false);
+
+	useEffect(() => {
+
+		if(ModalAcerto == true) {
+			setTimeout(() => {
+				setModalAcerto(false);
+			}, 1700);
+		}
+		
+	}
+	, [ModalAcerto]);
+
+	useEffect(() => {
+
+		if(ModalErro == true) {
+			setTimeout(() => {
+				setModalErro(false);
+			}, 1700);
+		}
+		
+	}
+	, [ModalErro]);
 
 	function getRandomInt(min, max) {
 		min = Math.ceil(min);
@@ -24,14 +55,14 @@ export default function jogoAdição() {
 	function VerificaResposta(arrayPosition, resultado){
 		if (arrayPosition == resultado)
 		{
-			Alert.alert('Correto!');
+			setModalAcerto(true);
 
 			setNumero1(getRandomInt(valorMinimo, valorMaximo));
 			setNumero2(getRandomInt(valorMinimo, valorMaximo));
 		}
 
 		else {
-			Alert.alert('Errado!');
+			setModalErro(true);
 		}
 	}
 
@@ -145,6 +176,82 @@ export default function jogoAdição() {
 					</TouchableOpacity>
 				
 				</Animatable.View>
+				<Modal
+					animationType="fade"
+					transparent={true}
+					visible={ModalAcerto}
+					statusBarTranslucent={true}
+				>
+					<View style={styles.centeredView}>
+
+						<Animatable.View
+							style={styles.modalView}
+							animation='zoomInUp'
+							useNativeDriver
+							duration={750}
+						>
+
+							<Animatable.View
+								animation='zoomInUp'
+								useNativeDriver
+								duration={70}
+							>
+								<Lottie
+									style={{width: 100, height: 100}}
+									resizeMode='contain'
+									source={SuccessAnimation}
+									autoPlay
+									autoSize
+									loop={false}
+								/>
+
+								<Text style={styles.modalSuccessTitle}>Acerto!</Text>
+
+							</Animatable.View>
+								
+						</Animatable.View>
+
+					</View>
+				</Modal>
+
+				<Modal
+					animationType="fade"
+					transparent={true}
+					visible={ModalErro}
+					statusBarTranslucent={true}
+				>
+					<View style={styles.centeredView}>
+
+						<Animatable.View
+							style={styles.modalView}
+							animation='zoomInUp'
+							useNativeDriver
+							duration={750}
+						>
+
+							<Animatable.View
+								animation='zoomInUp'
+								useNativeDriver
+								duration={70}
+							>
+								<Lottie
+									style={{width: 115, height: 115}}
+									resizeMode='contain'
+									source={ErrorAnimation}
+									autoPlay
+									autoSize
+									loop={false}
+								/>
+
+								<Text style={styles.modalErrorTitle}>Errado!</Text>
+								<Text style={styles.modalErrorText}>Tente Novamente!</Text>
+
+							</Animatable.View>
+								
+						</Animatable.View>
+
+					</View>
+				</Modal>
 			</View>
 		</Background>
 	);

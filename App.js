@@ -8,6 +8,7 @@ import TelaCadastro from './src/screens/TelaCadastro/index';
 import TelaInicial from './src/screens/TelaInicial';
 import TelaLogin from './src/screens/TelaLogin/index';
 
+import ContextProvider from './src/context/provider';
 import jogoAdição from './src/games/Operações Matemáticas/Adição';
 import jogoPortuguês from './src/games/Português/AcertarAnimal-Imagem/index';
 
@@ -38,6 +39,7 @@ export default function App() {
     
 		<NavigationContainer>
 			<Stack.Navigator screenOptions={headerStyle}>
+				
 				<Stack.Screen name="Início / Tela Principal" component={TabBar} options={{headerShown: false}}/>
 				<Stack.Screen name="Início" component={TelaInicial}/>
 				<Stack.Screen name="Cadastro" component={TelaCadastro}/>
@@ -45,6 +47,7 @@ export default function App() {
 			
 				<Stack.Screen name="Jogo Adição" component={jogoAdição}/>
 				<Stack.Screen name="Jogo Português" component={jogoPortuguês}/>
+				
 			</Stack.Navigator>
 		</NavigationContainer>
 	);
