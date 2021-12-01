@@ -8,61 +8,66 @@ db.transaction((tx) => {
 	);
 });
 
-function CadastraNoBanco(Usuário) {
+const CadastraNoBanco = (Nome, Email, Senha, Data_Nascimento) => {
+	return new Promise((resolve, reject) => {
+		db.transaction((tx) => {
+		
+			tx.executeSql(
+				'SELECT IDUsuario FROM Usuarios WHERE Email=?;',
+				[Email],
+				//-----------------------
+				(_, { rows }) => {
+					if (rows.length > 0) {
 
-	db.transaction((tx) => {
-		tx.executeSql(
-			'SELECT IDUsuario FROM Usuarios WHERE Email=?;',
-			[Usuário.Email],
-			//-----------------------
-			(_, { rows }) => {
-				if (rows.length > 0) {
+						reject('Parece que o Usuário já existe, tente fazer Login!');
 
-					console.log('O usuário ja existe!');
-
-				}
-
-				else {
-
+					}
 					tx.executeSql(
 						'INSERT INTO Usuarios (Nome, Email, Senha, Data_Nascimento) values (?, ?, ?, ?);',
 
-						[Usuário.Nome, Usuário.Email, Usuário.Senha, Usuário.Data_Nascimento],
-
+						[Nome, Email, Senha, Data_Nascimento],
+						//-----------------------
 						(_, { rowsAffected, insertId }) => {
 
 							if (rowsAffected > 0) {
+								tx.executeSql(
+									'SELECT IDUsuario, Nome, Email, Senha, Data_Nascimento FROM Usuarios WHERE IDUsuario=?;',
 
-								UsuárioClass.Id = parseInt(insertId);
-								UsuárioClass.setStatus('Logado');
+									[insertId],
+									(_, { rows }) => {
+										if (rows.length > 0) resolve(rows.item(0));
+									}
+								);
 							}
-
-							else console.log('Error inserting obj: ' + JSON.stringify(Usuário)); // Insert falhou
-							
-						});
-				
-				}
-			}
-		);
+							else reject('Erro ao fazer Cadastro');
+						},
+						(_, error) => reject(error)
+					);
+				});
+		});
 	}
 	);
-}
+};
 
-function SelectUsuárioById(id){
-	db.transaction((tx) => {
-		tx.executeSql(
-			'SELECT * FROM Usuarios WHERE IDUsuario=?;',
-			[id],
-			//-----------------------
-			(_, { rows }) => {
-				if (rows.length > 0) console.log(rows._array[0]);
-				else console.log('Obj not found: id=' + id);
-			}
-		);
+const Login = (Email, Senha) => {
+	return new Promise((resolve, reject) => {
+		db.transaction((tx) => {
+		
+			tx.executeSql(
+				'SELECT IDUsuario, Nome, Email, Senha, Data_Nascimento FROM Usuarios WHERE Email=? AND Senha=?;',
+				[Email, Senha],
+				//-----------------------
+				(_, { rows }) => {
+					if (rows.length > 0) resolve(rows.item(0));
+					else reject('Usuário não encontrado');
+				},
+				(_, error) => reject(error)
+			);
+		});
 	});
-}
+};
 
 export default {
 	CadastraNoBanco,
-	SelectUsuárioById,
+	Login
 };

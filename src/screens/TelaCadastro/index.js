@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { View, Modal, Text } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import { TextInput } from 'react-native-paper';
@@ -13,9 +13,9 @@ import SuccessAnimation from '../../../assets/Animations/animation-success.json'
 
 import Lottie from 'lottie-react-native';
 
-import Usuário from '../../classes/Usuários';
+import { UserContext } from '../../context/UserContext';
 import { validaEmail, verifica_se_duas_senhas_são_iguais, validaSenha, ValidaNome } from '../../services/Data Validation/email_validation';
-import db from '../../services/SQLite/DB';
+import UsuáriosDB from '../../services/SQLite/Tables/UsuáriosDB';
 
 export default function TelaCadastro({ navigation }) {
 
@@ -36,72 +36,33 @@ export default function TelaCadastro({ navigation }) {
 
 	const [ErrorText, setErrorText] = useState('');
 
+	const {User, setUser} = useContext(UserContext);
+
 	useEffect(() => {
 
 		if(ModalSucessoCadastro == true) {
 			setTimeout(() => {
-				navigation.navigate('Início / Tela Principal');
+				setModalSucessoCadastro(false);
+				if(User.Id != null) {
+					console.log(User);
+					navigation.navigate('Início / Tela Principal');
+				}
 			}, 1700);
 		}
 		
 	}
-	, [ModalSucessoCadastro]);
+	, [ModalSucessoCadastro, User]);
 
 	useEffect(() => {
 
 		if(ModalErroCadastro == true) {
 			setTimeout(() => {
 				setModalErroCadastro(false);
-			}, 2000);
+			}, 2500);
 		}
 		
 	}
 	, [ModalErroCadastro]);
-
-	function CadastraNoBanco(Usuário) {
-
-		db.transaction((tx) => {
-			tx.executeSql(
-				'SELECT IDUsuario FROM Usuarios WHERE Email=?;',
-				[Usuário.Email],
-				//-----------------------
-				(_, { rows }) => {
-					if (rows.length > 0) {
-	
-						setErrorText('Parece que o Usuário já existe, tente fazer Login!');
-						setModalErroCadastro(true);
-	
-					}
-	
-					else {
-	
-						tx.executeSql(
-							'INSERT INTO Usuarios (Nome, Email, Senha, Data_Nascimento) values (?, ?, ?, ?);',
-	
-							[Usuário.Nome, Usuário.Email, Usuário.Senha, Usuário.Data_Nascimento],
-	
-							(_, { rowsAffected, insertId }) => {
-	
-								if (rowsAffected > 0) {
-	
-									Usuário.Id = parseInt(insertId);
-									Usuário.setStatus('Logado');
-									setModalSucessoCadastro(true);
-								}
-	
-								else {
-									setErrorText('Erro ao fazer cadastro no Banco de Dados!');
-									setModalErroCadastro(true);
-								}
-								
-							});
-					
-					}
-				}
-			);
-		}
-		);
-	}
 
 	function renderButton() {
 		return (
@@ -109,12 +70,26 @@ export default function TelaCadastro({ navigation }) {
 			<View style={styles.button}>
 				<Botão title='Cadastrar'onPress={()=>{
 
-					Usuário.Nome = nome;
-					Usuário.Email = email;
-					Usuário.Senha = password;
-					Usuário.Data_Nascimento = date;
+					UsuáriosDB.CadastraNoBanco(nome, email, password, date)
+						.then(Obj =>  {
 
-					CadastraNoBanco(Usuário);
+							if (Obj.IDUsuario) {
+								setUser({
+									Id: Obj.IDUsuario,
+									Nome: Obj.Nome,
+									Email: Obj.Email,
+									Senha: Obj.Senha,
+									DataNascimento: Obj.Data_Nascimento,
+									Logado: true
+								});
+								setModalSucessoCadastro(true);
+							}
+					
+						})
+						.catch( err => {
+							setErrorText(String(err));
+							setModalErroCadastro(true);
+						} );
 					
 				}}/>
 

@@ -15,7 +15,7 @@ import Lottie from 'lottie-react-native';
 
 import { UserContext } from '../../context/UserContext';
 import { validaEmail, validaSenha } from '../../services/Data Validation/email_validation';
-import db from '../../services/SQLite/DB';
+import UsuáriosDB from '../../services/SQLite/Tables/UsuáriosDB';
 
 export default function TelaLogin({ navigation }) {
 
@@ -59,31 +59,13 @@ export default function TelaLogin({ navigation }) {
 	}
 	, [ModalErroCadastro]);
 
-	const Login = (Email, Senha) => {
-		return new Promise((resolve, reject) => {
-			db.transaction((tx) => {
-			
-				tx.executeSql(
-					'SELECT IDUsuario, Nome, Email, Senha, Data_Nascimento FROM Usuarios WHERE Email=? AND Senha=?;',
-					[Email, Senha],
-					//-----------------------
-					(_, { rows }) => {
-						if (rows.length > 0) resolve(rows.item(0));
-						else reject('Usuário não encontrado');
-					},
-					(_, error) => reject(error)
-				);
-			});
-		});
-	};
-
 	function renderButton() {
 		return (
 			
 			<View style={styles.button}>
 				<Botão title='Login'onPress={()=>{
 						
-					Login( email, password )
+					UsuáriosDB.Login( email, password )
 						.then( Obj =>  {
 
 							if (Obj.IDUsuario) {
