@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { View, Modal, Text } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import { TextInput } from 'react-native-paper';
@@ -12,8 +12,7 @@ import Lottie from 'lottie-react-native';
 
 import ErrorAnimation from '../../../assets/Animations/animation-error.json';
 import SuccessAnimation from '../../../assets/Animations/animation-success.json';
-import Usuário from '../../classes/Usuários';
-import { useUser } from '../../context/provider';
+import { UserContext } from '../../context/UserContext';
 import { validaEmail, validaSenha } from '../../services/Data Validation/email_validation';
 import db from '../../services/SQLite/DB';
 
@@ -31,18 +30,22 @@ export default function TelaLogin({ navigation }) {
 
 	const [ErrorText, setErrorText] = useState('');
 
-	// Const [{User, setUser}] = useUser();
+	const {User, setUser} = useContext(UserContext);
 
 	useEffect(() => {
 
 		if(ModalSucessoCadastro == true) {
 			setTimeout(() => {
-				navigation.navigate('Início / Tela Principal');
+				setModalSucessoCadastro(false);
+				if(User.Id != null) {
+					console.log(User);
+					navigation.navigate('Início / Tela Principal');
+				}
 			}, 1700);
 		}
 		
 	}
-	, [ModalSucessoCadastro]);
+	, [ModalSucessoCadastro, User]);
 
 	useEffect(() => {
 
@@ -55,13 +58,13 @@ export default function TelaLogin({ navigation }) {
 	}
 	, [ModalErroCadastro]);
 
-	const Login = (Usuário) => {
+	const Login = (Email, Senha) => {
 		return new Promise((resolve, reject) => {
 			db.transaction((tx) => {
 			
 				tx.executeSql(
 					'SELECT IDUsuario, Nome, Email, Senha, Data_Nascimento FROM Usuarios WHERE Email=? AND Senha=?;',
-					[Usuário.Email, Usuário.Senha],
+					[Email, Senha],
 					//-----------------------
 					(_, { rows }) => {
 						if (rows.length > 0) resolve(rows.item(0));
@@ -78,23 +81,19 @@ export default function TelaLogin({ navigation }) {
 			
 			<View style={styles.button}>
 				<Botão title='Login'onPress={()=>{
-
-					Usuário.Email = email;
-					Usuário.Senha = password;
 						
-					Login( Usuário )
+					Login( email, password )
 						.then( Obj =>  {
-							// SetUser({
-							// 	Id: Obj.IDUsuario,
-							// 	Nome: Obj.Nome,
-							// 	Email: Obj.Email,
-							// 	Senha: Obj.Senha,
-							// 	DataNascimento: Obj.Data_Nascimento,
-							// 	Logado: true
-							// });
 
 							if (Obj.IDUsuario) {
-								console.log(Obj);
+								setUser({
+									Id: Obj.IDUsuario,
+									Nome: Obj.Nome,
+									Email: Obj.Email,
+									Senha: Obj.Senha,
+									DataNascimento: Obj.Data_Nascimento,
+									Logado: true
+								});
 								setModalSucessoCadastro(true);
 							}
 						
