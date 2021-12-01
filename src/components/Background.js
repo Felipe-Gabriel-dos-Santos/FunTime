@@ -1,14 +1,14 @@
 import React from 'react';
 import { SafeAreaView, ImageBackground, StyleSheet } from 'react-native';
 
-export default function Background(props){
+import Image from '../../assets/FunTimeBackground.png';
 
-	const Image = '../../assets/FunTimeBackground.png';
+export default function Background(props){
     
 	return (
 		
 		<SafeAreaView style={styles.view}>
-			<ImageBackground source={require(Image)} resizeMode='cover' imageStyle={styles.imageStyle} style={styles.imgBackground}>
+			<ImageBackground source={Image} resizeMode='cover' imageStyle={styles.imageStyle} style={styles.imgBackground}>
 				
 				{props.children}
 			

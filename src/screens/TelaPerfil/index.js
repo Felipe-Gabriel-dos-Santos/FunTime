@@ -8,7 +8,6 @@ import { styles } from './style';
 
 import defaultImage from '../../../assets/default-user-image.png';
 import BackGroundPerfilImage from '../../../assets/FunTimeBackground2.png';
-import Usuário from '../../classes/Usuários';
 
 export default function TelaPerfil(){
     

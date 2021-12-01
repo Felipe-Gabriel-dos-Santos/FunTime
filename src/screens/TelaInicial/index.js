@@ -6,8 +6,9 @@ import Botão from '../../components/Botão';
 import IniciarJogo from '../../components/IniciarJogo';
 import ModalFunTime from '../../components/Modal-FunTime';
 
-import Logo from '../../../assets/Logo-FunTime.png';
 import { styles } from './style';
+
+import Logo from '../../../assets/Logo-FunTime.png';
 
 export default function TelaInicial({ navigation }){
 

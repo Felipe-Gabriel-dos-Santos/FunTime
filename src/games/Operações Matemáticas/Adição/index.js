@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { View, TouchableOpacity, Alert, Text, Modal } from 'react-native';
+import { View, TouchableOpacity, Text, Modal } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 
 import Background from '../../../components/Background';
 
 import { styles } from './style';
 
-import Lottie from 'lottie-react-native';
-
 import ErrorAnimation from '../../../../assets/Animations/animation-error.json';
 import SuccessAnimation from '../../../../assets/Animations/animation-success.json';
+
+import Lottie from 'lottie-react-native';
 
 export default function jogoAdição() {
 

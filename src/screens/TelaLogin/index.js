@@ -8,10 +8,11 @@ import Botão from '../../components/Botão';
 
 import { styles } from './style';
 
-import Lottie from 'lottie-react-native';
-
 import ErrorAnimation from '../../../assets/Animations/animation-error.json';
 import SuccessAnimation from '../../../assets/Animations/animation-success.json';
+
+import Lottie from 'lottie-react-native';
+
 import { UserContext } from '../../context/UserContext';
 import { validaEmail, validaSenha } from '../../services/Data Validation/email_validation';
 import db from '../../services/SQLite/DB';

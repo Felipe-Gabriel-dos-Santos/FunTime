@@ -1,13 +1,11 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import React, {useState} from 'react';
-import { View, StyleSheet, Text, TouchableHighlight, Modal, Image } from 'react-native';
+import { View, StyleSheet, Text, TouchableHighlight, Modal } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 
 export default function IniciarJogo(props){
 
 	const [modalVisible, setModalVisible] = useState(false);
-
-	const Image = '../../assets/FunTimeBackground.png';
 
 	return (
 		<View>

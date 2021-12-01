@@ -70,8 +70,10 @@
                 "groups": [
                     ["/^react/", "/^@react/", "/expo/", "/@expo/" ],
                     "/components/",
-                    [ "/styles/", "/style/"],
                     "/screens/",
+                    [ "/styles/", "/style/"],
+                    "/assets/",
+                    "/Animations/",
                     "module",
                     ["parent", "sibling", "index"]
                 ],
