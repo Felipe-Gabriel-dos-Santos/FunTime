@@ -15,7 +15,7 @@ import Lottie from 'lottie-react-native';
 
 import { UserContext } from '../../context/UserContext';
 import { validaEmail, verifica_se_duas_senhas_são_iguais, validaSenha, ValidaNome } from '../../services/Data Validation/email_validation';
-import UsuáriosDB from '../../services/SQLite/Tables/UsuáriosDB';
+import { CadastraNoBanco } from '../../services/SQLite/Tables/UsuáriosDB';
 
 export default function TelaCadastro({ navigation }) {
 
@@ -70,7 +70,7 @@ export default function TelaCadastro({ navigation }) {
 			<View style={styles.button}>
 				<Botão title='Cadastrar'onPress={()=>{
 
-					UsuáriosDB.CadastraNoBanco(nome, email, password, date)
+					CadastraNoBanco(nome, email, password, date)
 						.then(Obj =>  {
 
 							if (Obj.IDUsuario) {

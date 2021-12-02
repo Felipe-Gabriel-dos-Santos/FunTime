@@ -15,7 +15,7 @@ import Lottie from 'lottie-react-native';
 
 import { UserContext } from '../../context/UserContext';
 import { validaEmail, validaSenha } from '../../services/Data Validation/email_validation';
-import UsuáriosDB from '../../services/SQLite/Tables/UsuáriosDB';
+import { Login } from '../../services/SQLite/Tables/UsuáriosDB';
 
 export default function TelaLogin({ navigation }) {
 
@@ -25,9 +25,9 @@ export default function TelaLogin({ navigation }) {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 
-	const [ModalSucessoCadastro, setModalSucessoCadastro] = useState(false);
+	const [ModalSucessoLogin, setModalSucessoLogin] = useState(false);
 
-	const [ModalErroCadastro, setModalErroCadastro] = useState(false);
+	const [ModalErroLogin, setModalErroLogin] = useState(false);
 
 	const [ErrorText, setErrorText] = useState('');
 
@@ -35,9 +35,9 @@ export default function TelaLogin({ navigation }) {
 
 	useEffect(() => {
 
-		if(ModalSucessoCadastro == true) {
+		if(ModalSucessoLogin == true) {
 			setTimeout(() => {
-				setModalSucessoCadastro(false);
+				setModalSucessoLogin(false);
 				if(User.Id != null) {
 					console.log(User);
 					navigation.navigate('Início / Tela Principal');
@@ -46,18 +46,18 @@ export default function TelaLogin({ navigation }) {
 		}
 		
 	}
-	, [ModalSucessoCadastro, User]);
+	, [ModalSucessoLogin, User]);
 
 	useEffect(() => {
 
-		if(ModalErroCadastro == true) {
+		if(ModalErroLogin == true) {
 			setTimeout(() => {
-				setModalErroCadastro(false);
+				setModalErroLogin(false);
 			}, 2000);
 		}
 		
 	}
-	, [ModalErroCadastro]);
+	, [ModalErroLogin]);
 
 	function renderButton() {
 		return (
@@ -65,7 +65,7 @@ export default function TelaLogin({ navigation }) {
 			<View style={styles.button}>
 				<Botão title='Login'onPress={()=>{
 						
-					UsuáriosDB.Login( email, password )
+					Login( email, password )
 						.then( Obj =>  {
 
 							if (Obj.IDUsuario) {
@@ -77,13 +77,13 @@ export default function TelaLogin({ navigation }) {
 									DataNascimento: Obj.Data_Nascimento,
 									Logado: true
 								});
-								setModalSucessoCadastro(true);
+								setModalSucessoLogin(true);
 							}
 						
 						})
 						.catch( err => {
 							setErrorText(String(err));
-							setModalErroCadastro(true);
+							setModalErroLogin(true);
 						} );
 					
 				}}/>
@@ -167,7 +167,7 @@ export default function TelaLogin({ navigation }) {
 				<Modal
 					animationType="fade"
 					transparent={true}
-					visible={ModalSucessoCadastro}
+					visible={ModalSucessoLogin}
 					statusBarTranslucent={true}
 				>
 					<View style={styles.centeredView}>
@@ -205,7 +205,7 @@ export default function TelaLogin({ navigation }) {
 				<Modal
 					animationType="fade"
 					transparent={true}
-					visible={ModalErroCadastro}
+					visible={ModalErroLogin}
 					statusBarTranslucent={true}
 				>
 					<View style={styles.centeredView}>

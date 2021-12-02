@@ -1,14 +1,11 @@
 import React, {useState} from 'react';
-import { View, Image, Text } from 'react-native';
+import { View } from 'react-native';
 
 import Background from '../../components/Background';
-import Botão from '../../components/Botão';
 import IniciarJogo from '../../components/IniciarJogo';
-import ModalFunTime from '../../components/Modal-FunTime';
+import ModalLoginCadastro from '../../components/Modals/ModalLoginCadastro';
 
 import { styles } from './style';
-
-import Logo from '../../../assets/Logo-FunTime.png';
 
 export default function TelaInicial({ navigation }){
 
@@ -23,38 +20,12 @@ export default function TelaInicial({ navigation }){
 				<IniciarJogo name={'Jogo Português'} text={'Acertar animal da Imagem'} routeName={'Jogo Português'} navigation={navigation}/>
 				
 			</View>
-			
-			<ModalFunTime
+
+			<ModalLoginCadastro
 				show={modal}
 				close={() => setModal(false)}
-				buttonCloseText={'Agora não'}
-			>
-
-				<Image source={Logo} resizeMode='cover' style={styles.image}/>
-
-				<Text style={styles.ModalText}>Deseja fazer login / Cadastro?</Text>
-
-				<View style={styles.buttonContainer}>
-				
-					<Botão title="Cadastro" onPress={() => {
-						setModal(false);
-						navigation.navigate('Cadastro');
-					
-					}}
-					style={styles.button}
-					
-					/>
-
-					<Botão title="Login" onPress={() => {
-
-						setModal(false);
-						navigation.navigate('Login');
-					}}
-					/>
-
-				</View>
-
-			</ModalFunTime>
+				navigation={navigation}
+			/>
 	
 		</Background>
 

@@ -1,4 +1,3 @@
-import UsuárioClass from '../../../classes/Usuários';
 import db from '../DB';
 
 db.transaction((tx) => {
@@ -8,7 +7,7 @@ db.transaction((tx) => {
 	);
 });
 
-const CadastraNoBanco = (Nome, Email, Senha, Data_Nascimento) => {
+export const CadastraNoBanco = (Nome, Email, Senha, Data_Nascimento) => {
 	return new Promise((resolve, reject) => {
 		db.transaction((tx) => {
 		
@@ -49,7 +48,7 @@ const CadastraNoBanco = (Nome, Email, Senha, Data_Nascimento) => {
 	);
 };
 
-const Login = (Email, Senha) => {
+export const Login = (Email, Senha) => {
 	return new Promise((resolve, reject) => {
 		db.transaction((tx) => {
 		
@@ -65,9 +64,4 @@ const Login = (Email, Senha) => {
 			);
 		});
 	});
-};
-
-export default {
-	CadastraNoBanco,
-	Login
 };
