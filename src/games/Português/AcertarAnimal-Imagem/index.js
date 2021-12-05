@@ -125,7 +125,6 @@ export default function jogoPortuguês(){
 
 	const [Número, setNúmero] = useState(getRandomInt(valorMínimo, valorMáximo));
 	
-	var Nome = ListaAnimais[Número].Nome;
 	var Imagem = ListaAnimais[Número].Imagem;
 
 	var respostaCerta = ListaAnimais[Número].Nome;

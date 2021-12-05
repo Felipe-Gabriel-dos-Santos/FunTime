@@ -39,7 +39,6 @@ export const styles = StyleSheet.create({
 		fontSize: 18,
 		marginHorizontal: '25%',
 		textTransform: 'uppercase',
-		
 	},
 
 	imgBackground: {
@@ -77,6 +76,7 @@ export const styles = StyleSheet.create({
 		width: '90%',
 		height: 40,
 		paddingVertical: 6,
+		paddingHorizontal: 8,
 		elevation: 10,
 		borderRadius: 10,
 		borderWidth: 1,

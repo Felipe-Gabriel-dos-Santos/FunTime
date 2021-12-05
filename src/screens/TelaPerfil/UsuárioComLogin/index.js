@@ -50,7 +50,7 @@ export default function UsuárioComLogin() {
 					style={styles.buttonEmail}
 				>
 					<TouchableHighlight underlayColor='none'>
-						<Text style={styles.buttonTextInfo}>Email: {User.Email}</Text>
+						<Text numberOfLines={1} style={styles.buttonTextInfo}>Email: {User.Email}</Text>
 					</TouchableHighlight>
 				</Animatable.View>
 

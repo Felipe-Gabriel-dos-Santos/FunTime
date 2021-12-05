@@ -37,11 +37,11 @@ export default function TelaLogin({ navigation }) {
 
 		if(ModalSucessoLogin == true) {
 			setTimeout(() => {
+
 				setModalSucessoLogin(false);
-				if(User.Id != null) {
-					console.log(User);
-					navigation.navigate('Início / Tela Principal');
-				}
+				
+				if(User.Id != null) navigation.navigate('Início / Tela Principal');
+				
 			}, 1700);
 		}
 		

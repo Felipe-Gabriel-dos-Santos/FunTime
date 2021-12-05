@@ -22,6 +22,9 @@
             "error",
             "tab"
         ],
+
+        "react/prop-types": "off",
+        
         "linebreak-style": [
             "error",
             "windows"

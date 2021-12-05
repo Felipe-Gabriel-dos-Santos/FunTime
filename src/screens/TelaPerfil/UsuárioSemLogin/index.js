@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 
 import Background from '../../../components/Background';
@@ -20,19 +20,42 @@ export default function UsuárioSemLogin({navigation}){
 
 		<Background>
 			<View style={styles.container}>
+				<Animatable.View
+					animation='fadeIn'
+					useNativeDriver
+					duration={1000}
+					style={styles.animation}
+				>
+					<Lottie
+						style={{width: 325, height: 325}}
+						resizeMode='contain'
+						source={AstronautAnimation}
+						autoPlay
+						autoSize
+						loop={true}
+					/>
+				</Animatable.View>
 
-				<Lottie
-					style={{width: 300, height: 300}}
-					resizeMode='contain'
-					source={AstronautAnimation}
-					autoPlay
-					autoSize
-					loop={true}
-				/>
+				<Animatable.Text
+					animation='fadeIn'
+					useNativeDriver
+					duration={850}
+					style={styles.text}
+				>
+					Parece que você não fez Login ou Cadastro.
+				</Animatable.Text>
 
-				<Text>Parece que você não fez Login ou Cadastro.</Text>
-				<Text>Deseja fazer Agora?</Text>
-				<Botão title={'Sim'} onPress={() => setModal(true)}/>
+				<Animatable.Text
+					animation='rubberBand'
+					useNativeDriver
+					duration={850}
+					style={styles.subText}
+
+				>
+					Deseja fazer Agora?
+				</Animatable.Text>
+
+				<Botão title={'Ok'} onPress={() => setModal(true)}/>
 
 				<ModalLoginCadastro show={Modal} close={() => setModal(false)} navigation={navigation}/>
 				

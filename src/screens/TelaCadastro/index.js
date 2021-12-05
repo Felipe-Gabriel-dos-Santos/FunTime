@@ -42,11 +42,11 @@ export default function TelaCadastro({ navigation }) {
 
 		if(ModalSucessoCadastro == true) {
 			setTimeout(() => {
+				
 				setModalSucessoCadastro(false);
-				if(User.Id != null) {
-					console.log(User);
-					navigation.navigate('Início / Tela Principal');
-				}
+
+				if(User.Id != null) navigation.navigate('Início / Tela Principal');
+		
 			}, 1700);
 		}
 		
