@@ -3,7 +3,7 @@ import React from 'react';
 import { StyleSheet, Text, TouchableHighlight } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 
-export default function Botão(props) {
+export default function Botão({onPress, title}) {
 
 	return (
 		<Animatable.View
@@ -11,9 +11,9 @@ export default function Botão(props) {
 			useNativeDriver
 			duration={2000}>
 
-			<TouchableHighlight  underlayColor='none' onPress={props.onPress}>
+			<TouchableHighlight  underlayColor='none' onPress={onPress}>
 				<LinearGradient colors={['#bf00bf', '#bf00bf', '#8303a3']} style={styles.button}>
-					<Text style={styles.text}>{String(props.title)}</Text>
+					<Text style={styles.text}>{String(title)}</Text>
 				</LinearGradient>
 			</TouchableHighlight>
 

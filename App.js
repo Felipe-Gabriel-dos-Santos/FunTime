@@ -7,6 +7,8 @@ import TabBar from './src/components/TabBar';
 import TelaCadastro from './src/screens/TelaCadastro/index';
 import TelaInicial from './src/screens/TelaInicial';
 import TelaLogin from './src/screens/TelaLogin/index';
+import TelaPerfil from './src/screens/TelaPerfil';
+import UsuárioComLogin from './src/screens/TelaPerfil/UsuárioComLogin';
 
 import UserContextProvider from './src/context/UserContext';
 import jogoAdição from './src/games/Operações Matemáticas/Adição';
@@ -37,12 +39,15 @@ export default function App() {
 
 	return (
 		<UserContextProvider>
+	
 			<NavigationContainer>
 			
 				<Stack.Navigator screenOptions={headerStyle}>
 				
 					<Stack.Screen name="Início / Tela Principal" component={TabBar} options={{headerShown: false}}/>
 					<Stack.Screen name="Início" component={TelaInicial}/>
+					<Stack.Screen name="Perfil" component={TelaPerfil}/>
+					<Stack.Screen name="Perfil / Com Login" component={UsuárioComLogin}/>
 					<Stack.Screen name="Cadastro" component={TelaCadastro}/>
 					<Stack.Screen name="Login" component={TelaLogin}/>
 			
@@ -51,6 +56,7 @@ export default function App() {
 				
 				</Stack.Navigator>
 			</NavigationContainer>
+	
 		</UserContextProvider>
 	);
 
