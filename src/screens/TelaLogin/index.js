@@ -114,12 +114,14 @@ export default function TelaLogin({ navigation }) {
 
 	return (
 		<Background>
+
 			<View style={styles.view}>
 				<Animatable.View
 					animation='zoomIn'
 					useNativeDriver
 					duration={1000}
 				>
+
 					<TextInput style={styles.input}
 						label="Email"
 						value={email}
@@ -163,6 +165,26 @@ export default function TelaLogin({ navigation }) {
 					{erroSenha ? renderErrorText('password') : <View/>}
 
 				</Animatable.View>
+
+				<Animatable.Text
+					style={styles.textNoAccount}
+					animation={'fadeIn'}
+					duration={1000}
+					useNativeDriver
+				>
+					Não tem uma conta?
+
+				</Animatable.Text>
+				<Animatable.Text
+					style={[styles.textNoAccount, {color: 'purple'}]}
+					animation={'fadeIn'}
+					duration={1000}
+					useNativeDriver
+					onPress={() => navigation.navigate('Cadastro')}
+				>
+					Crie uma!
+
+				</Animatable.Text>
 
 				<Modal
 					animationType="fade"

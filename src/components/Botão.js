@@ -7,7 +7,7 @@ export default function Botão({onPress, title}) {
 
 	return (
 		<Animatable.View
-			animation='bounceIn'
+			animation='fadeIn'
 			useNativeDriver
 			duration={2000}>
 

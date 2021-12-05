@@ -84,6 +84,10 @@ export const styles = StyleSheet.create({
 		fontSize: 15,
 		textAlign: 'center',
 		color: '#c40d00'
+	},
+
+	textNoAccount:{
+		fontWeight: 'bold'
 	}
 
 });

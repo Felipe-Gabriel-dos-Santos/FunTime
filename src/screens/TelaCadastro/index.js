@@ -316,6 +316,26 @@ export default function TelaCadastro({ navigation }) {
 
 				</Animatable.View>
 
+				<Animatable.Text
+					style={styles.textNoAccount}
+					animation={'fadeIn'}
+					duration={1000}
+					useNativeDriver
+				>
+					Já tem uma conta?
+
+				</Animatable.Text>
+				<Animatable.Text
+					style={[styles.textNoAccount, {color: 'purple'}]}
+					animation={'fadeIn'}
+					duration={1000}
+					useNativeDriver
+					onPress={() => navigation.navigate('Login')}
+				>
+					Faça Login!
+
+				</Animatable.Text>
+
 				{
 					password != ''
 					&& erroNome == false

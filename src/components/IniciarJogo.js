@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
 	},
 	modalTitle: {
 		marginBottom: 25,
-		fontSize: 20,
+		fontSize: 22,
 		textAlign: 'center',
 		fontWeight: 'bold',
 		color: '#8303a3',
@@ -147,8 +147,10 @@ const styles = StyleSheet.create({
 
 	modalText: {
 		marginBottom: 15,
-		fontSize: 15,
+		fontSize: 16,
+		marginHorizontal: 20,
 		textAlign: 'center',
+		fontWeight: 'bold'
 	},
 
 	imgBackground: {

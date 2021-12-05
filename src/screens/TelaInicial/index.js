@@ -13,8 +13,8 @@ export default function TelaInicial({ navigation }){
 
 			<View style={styles.container}>
 				
-				<IniciarJogo name={'Jogo Adição'} text={'Jogo de soma: (Ex.: 2 + 2 = 4)'} routeName={'Jogo Adição'} navigation={navigation}/>
-				<IniciarJogo name={'Jogo Português'} text={'Acertar animal da Imagem'} routeName={'Jogo Português'} navigation={navigation}/>
+				<IniciarJogo name={'Adição'} text={'Jogo de soma: (Ex.: 2 + 2 = 4)'} routeName={'Jogo Adição'} navigation={navigation}/>
+				<IniciarJogo name={'Acertar Nome do Animal'} text={'Acertar nome dos animais presentes nas imagens'} routeName={'Jogo Português'} navigation={navigation}/>
 				
 			</View>
 	
