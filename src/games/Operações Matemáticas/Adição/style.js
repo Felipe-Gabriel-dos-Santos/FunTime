@@ -13,8 +13,8 @@ export const styles = StyleSheet.create({
 		textAlign: 'center',
 		fontSize: 65,
 		fontWeight: 'bold',
-		marginTop: -450,
-		color: 'purple'
+		marginTop: '-80%',
+		color: 'purple',
 	},
 
 	questionText: {
@@ -27,7 +27,7 @@ export const styles = StyleSheet.create({
 	},
 
 	buttonAlternatives: {
-		marginBottom: -450,
+		marginBottom: '-87%',
 		flexDirection: 'row',
 		alignContent: 'flex-end',
 		marginHorizontal: 20,
@@ -36,7 +36,7 @@ export const styles = StyleSheet.create({
 	},
 	button: {
 		height: 70,
-		width: 170,
+		width: '47%',
 		marginBottom: 20,
 		backgroundColor: '#8303a3',
 		borderRadius: 10,

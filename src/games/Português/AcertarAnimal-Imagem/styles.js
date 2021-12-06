@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
 	Image: {
 		height: 250,
 		marginHorizontal: 20,
-		marginTop: -450,
+		marginTop: '-80%',
 		borderRadius: 15,
 		shadowColor: '#000',
 		shadowOffset: {
@@ -23,7 +23,7 @@ export const styles = StyleSheet.create({
 	},
 
 	buttonAlternatives: {
-		marginBottom: -450,
+		marginBottom: '-87%',
 		flexDirection: 'row',
 		alignContent: 'flex-end',
 		marginHorizontal: 20,
@@ -32,7 +32,7 @@ export const styles = StyleSheet.create({
 	},
 	button: {
 		height: 70,
-		width: 170,
+		width: '47%',
 		marginBottom: 20,
 		backgroundColor: '#8303a3',
 		borderRadius: 10,

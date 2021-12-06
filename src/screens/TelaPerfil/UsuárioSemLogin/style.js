@@ -13,10 +13,10 @@ export const styles = StyleSheet.create({
 		fontSize: 17,
 		marginHorizontal: 20,
 		marginBottom: 5,
+		textAlign: 'center'
 	},
 
 	animation: {
-		marginTop: -150,
-		marginBottom: 35
+		marginTop: '-25%',
 	}
 });

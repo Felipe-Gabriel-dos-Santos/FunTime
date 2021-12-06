@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
 		height: 70,
 		justifyContent: 'center',
 		borderRadius: 90,
-		marginTop: 45,
+		marginTop: '12%',
 		marginBottom: 15,
 		marginHorizontal: '40%',
 		borderWidth: 2,
@@ -23,7 +23,7 @@ export const styles = StyleSheet.create({
 	userView: {
 		marginTop: 15,
 		marginBottom: 15,
-		height: '25%',
+		height: 190,
 		width: '93%',
 		elevation: 15,
 		borderRadius: 15,

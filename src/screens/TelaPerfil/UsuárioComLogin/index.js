@@ -57,7 +57,7 @@ export default function UsuárioComLogin() {
 				<Animatable.View
 					animation='slideInUp'
 					useNativeDriver
-					duration={2150}
+					duration={1500}
 					style={styles.button}
 				>
 					<TouchableHighlight
