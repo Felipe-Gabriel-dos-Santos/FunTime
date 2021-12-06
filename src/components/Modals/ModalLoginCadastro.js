@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { View, Image, Text, StyleSheet } from 'react-native';
 
 import Logo from '../../../assets/Logo-FunTime.png';
@@ -7,6 +7,7 @@ import Botão from '../Botão';
 import ModalFunTime from './Modal-FunTime';
 
 export default function ModalLoginCadastro({navigation, show, close}){
+
 	return(
 		<ModalFunTime
 			show={show}
@@ -20,20 +21,24 @@ export default function ModalLoginCadastro({navigation, show, close}){
 
 			<View style={styles.buttonContainer}>
 				
-				<Botão title="Cadastro" onPress={() => {
-					close;
-					navigation.navigate('Cadastro');
+				<Botão
+					title="Cadastro"
+					onPress={() => {
+						close;
+						navigation.navigate('Cadastro');
 					
-				}}
-				style={styles.button}
+					}}
+					style={styles.button}
 					
 				/>
 
-				<Botão title="Login" onPress={() => {
+				<Botão
+					title="Login"
+					onPress={() => {
+						close;
+						navigation.navigate('Login');
 
-					close;
-					navigation.navigate('Login');
-				}}
+					}}
 				/>
 
 			</View>

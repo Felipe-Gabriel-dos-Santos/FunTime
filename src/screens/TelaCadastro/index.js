@@ -145,6 +145,7 @@ export default function TelaCadastro({ navigation }) {
 						mode='outlined'
 						theme={{ colors: { primary: 'purple'}}}
 						error={erroNome}
+						maxLength={70}
 					/>
 
 					{erroNome ? renderErrorText('name') : <View/>}
@@ -171,6 +172,7 @@ export default function TelaCadastro({ navigation }) {
 						keyboardType="email-address"
 						theme={{ colors: { primary: 'purple'}}}
 						error={erroEmail}
+						maxLength={50}
 					/>
 
 					{erroEmail ? renderErrorText('email') : <View/>}
@@ -193,6 +195,7 @@ export default function TelaCadastro({ navigation }) {
 						theme={{ colors: { primary: 'purple'}}}
 						error={erroSenha1}
 						secureTextEntry
+						maxLength={50}
 					/>
 
 					{erroSenha1 ? renderErrorText('password') : <View/>}
@@ -218,6 +221,7 @@ export default function TelaCadastro({ navigation }) {
 						theme={{ colors: { primary: 'purple'}}}
 						error={erroSenha2}
 						secureTextEntry
+						maxLength={50}
 					/>
 
 					{erroSenha2 ? renderErrorText('password') : <View/>}
@@ -235,6 +239,9 @@ export default function TelaCadastro({ navigation }) {
 						autoCompleteType='cc-exp'
 						mode='outlined'
 						theme={{ colors: { primary: 'purple'}}}
+						keyboardType='number-pad'
+						placeholder='dd-mm-yyyy'
+						maxLength={10}
 					/>
 
 					<Modal

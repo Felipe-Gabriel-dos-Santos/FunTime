@@ -15,23 +15,8 @@ export const styles = StyleSheet.create({
 		marginBottom: 5,
 	},
 
-	subText: {
-		fontWeight: 'bold',
-		color: 'white',
-		fontSize: 17,
-		marginHorizontal: 20,
-		backgroundColor: '#bf00bf',
-		marginBottom: 5,
-		borderRadius: 10,
-		height: 30,
-		width: 200,
-		textAlign: 'center',
-		elevation: 5
-
-	},
-
 	animation: {
 		marginTop: -150,
-		marginBottom: 45
+		marginBottom: 35
 	}
 });

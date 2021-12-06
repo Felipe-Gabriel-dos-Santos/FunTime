@@ -1,10 +1,9 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { View } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 
 import Background from '../../../components/Background';
 import Botão from '../../../components/Botão';
-import ModalLoginCadastro from '../../../components/Modals/ModalLoginCadastro';
 
 import { styles } from './style';
 
@@ -13,8 +12,6 @@ import AstronautAnimation from '../../../../assets/Animations/animation-astronau
 import Lottie from 'lottie-react-native';
 
 export default function UsuárioSemLogin({navigation}){
-
-	const [Modal, setModal] = useState(false);
 
 	return (
 
@@ -45,19 +42,18 @@ export default function UsuárioSemLogin({navigation}){
 					Parece que você não fez Login ou Cadastro.
 				</Animatable.Text>
 
-				<Animatable.Text
-					animation='rubberBand'
-					useNativeDriver
-					duration={850}
-					style={styles.subText}
+				<Botão
+					title="Cadastro"
+					onPress={() =>
+						navigation.navigate('Cadastro')}
+					style={styles.button}
+					
+				/>
 
-				>
-					Deseja fazer Agora?
-				</Animatable.Text>
-
-				<Botão title={'Ok'} onPress={() => setModal(true)}/>
-
-				<ModalLoginCadastro show={Modal} close={() => setModal(false)} navigation={navigation}/>
+				<Botão
+					title="Login"
+					onPress={() => navigation.navigate('Login')}
+				/>
 				
 			</View>
 		</Background>
